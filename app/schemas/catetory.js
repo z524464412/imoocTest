@@ -2,18 +2,8 @@ var mongoose =require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 var MovieSchema = new Schema({
-    doctor: String,
-    title: String,
-    language: String,
-    country: String,
-    year: String,
-    summary: String,
-    poster: String,
-    flash:String,
-    catetory:{
-        type:ObjectId,
-        ref:'Catetory'
-    },
+    name:String,
+    movies:[{type:ObjectId,ref:'Movie'}],
     meta: {
         createAt: {
             type: Date,
