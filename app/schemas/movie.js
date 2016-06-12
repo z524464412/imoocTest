@@ -10,9 +10,9 @@ var MovieSchema = new Schema({
     summary: String,
     poster: String,
     flash:String,
-    catetory:{
+    category:{
         type:ObjectId,
-        ref:'Catetory'
+        ref:'Category'
     },
     meta: {
         createAt: {

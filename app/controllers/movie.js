@@ -1,4 +1,5 @@
 var Movie =require('../models/movie');
+var Category= require('../models/category');
 var Comment = require('../models/comment');
 var _ =require('underscore');
 
@@ -24,33 +25,29 @@ exports.detail =function(req, res) {
 //admin page
 //app.get('/admin/movie', function(req, res) {
 exports.new =function(req,res){
-    res.render('admin', {
-        title: 'demo1 后台录入页',
-        movie: {
-            _id: '',
-            doctor: '',
-            country: '',
-            title: '',
-            year: '',
-            poster: '',
-            language: '',
-            flash: '',
-            summary: ''
-        }
-    });
+    Category.find({},function(err,categories){
+        res.render('admin', {
+            title: 'demo1 后台录入页',
+            categories:categories,
+            movie: {}
+        });
+    })
 };
 
 
 //admin update movie
 //app.get('/admin/update/:id', function(req, res) {
 exports.update = function(req,res){
+
     var id = req.params.id;
     if (id) {
         Movie.findById(id, function(err, movie) {
-            console.log(movie);
-            res.render('admin', {
-                title: 'demo1 后台更新页',
-                movie: movie
+            Category.find({}, function (err, categories) {
+                res.render('admin', {
+                    title: 'demo1 后台更新页',
+                    movie: movie,
+                    categories:categories
+                });
             });
         });
     }
@@ -63,8 +60,8 @@ exports.save = function(req,res){
     var id = req.body.movie._id;
     var movieObj = req.body.movie;
     var _movie;
-    console.log(id);
-    if (id !== undefined) {
+    console.log(id+"req.body.movie._id");
+    if (id) {
         Movie.findById(id, function(err, movie) {
             if (err) {
                 console.log(err);
@@ -78,21 +75,32 @@ exports.save = function(req,res){
             });
         });
     } else {
-        _movie = new Movie({
-            doctor: movieObj.doctor,
-            title: movieObj.title,
-            language: movieObj.language,
-            country: movieObj.country,
-            year: movieObj.year,
-            poster: movieObj.poster,
-            flash: movieObj.flash,
-            summary: movieObj.summary
-        });
+        _movie = new Movie(movieObj);
+        var categoryId = _movie.category;
+        var categoryName = _movie.categoryName;
         _movie.save(function(err, movie) {
             if (err) {
                 console.log(err);
             }
-            res.redirect('/movie/detail/' + movie._id);
+            if(categoryId){
+                Category.findById(categoryId,function(err,category){
+                    category.movies.push(movie._id);
+                    category.save(function(err,category){
+                        res.redirect('/movie/detail/' + movie._id);
+                    })
+                });
+            }else if(categoryName){
+                var category = new Category({
+                    name:categoryName,
+                    movies:[movie._id]
+                })
+                category.save(function(err,category){
+                    movie.category =category._id;
+                    movie.save(function(err,movie){
+                        res.redirect('/movie/detail/' + movie._id);
+                    })
+                })
+            }
         });
     }
 };

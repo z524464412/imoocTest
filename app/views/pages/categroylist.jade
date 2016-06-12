@@ -5,14 +5,14 @@ block content
             table.table.table-hover.table-bordered
                 thead
                     tr
-                       th 名字
-                       th 密码
-                       th 时间
-                       th 查看
-                       th 修改
-                       th 删除
+                        th 名字
+                        th 密码
+                        th 时间
+                        th 查看
+                        th 修改
+                        th 删除
                 tbody
-                    each item in users
+                    each item in categories
                         tr(class="item-id-#{item._id}")
                             td #{item.name}
                             td #{item.password}
