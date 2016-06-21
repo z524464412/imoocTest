@@ -173,6 +173,7 @@ mongoose.connect(dbUrl);
 app.set('views', path.join(__dirname, './app/views/pages'));
 app.set('view engine','jade');
 app.use(cookieParser());
+app.use(require('connect-multiparty')());
 app.use(cookieSession({
     name:'session',
     keys:['key1','key2'],
