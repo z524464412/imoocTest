@@ -1,0 +1,6 @@
+extends ../layout
+block content
+    div(ng-controller="HomeController")
+        h3 Button hits: {{ hits}}
+        button(ng-click="registerHit()") Hit ME,if you dare
+    script(src="/javascript/angular.js")

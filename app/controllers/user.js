@@ -87,3 +87,6 @@ exports.adminRequired = function(req,res,next) {
     }
     next();
 };
+exports.permissions = function(req,res,next){
+    res.redirect('/');
+}

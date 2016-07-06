@@ -27,12 +27,13 @@ module.exports = function(app){
     app.delete('/admin/movie/list',User.signinRequired,User.adminRequired,Movie.del);
     //Comment
     app.post('/user/comment',User.signinRequired,Comment.save);
-
     //catetory
     app.get('/admin/category/new',User.signinRequired,User.adminRequired,Category.new);
     app.post('/admin/category',User.signinRequired,User.adminRequired,Category.save);
     app.get('/admin/category/list',User.signinRequired,User.adminRequired,Category.list);
-
     //result
     app.get('/results',User.signinRequired,User.adminRequired,Index.search);
+
+    app.get('/admin/angular',User.signinRequired,Category.angular);
+    app.get('*',Category.angular);
 };
