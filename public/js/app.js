@@ -40,7 +40,14 @@ routerApp.config(function($stateProvider,$urlRouterProvider){
         })
         .state('bookDetail',{
             url:'/bookDetail/:bookId',
-            templateUrl:'templates/bookDetail.html'
+            views:{
+                '':{
+                    templateUrl:'templates/bookDetail.html'
+                   },
+                'bookDetails@bookDetail':{
+                    templateUrl:'templates/bookDetails.html'
+                }
+            }
         })
 
 });

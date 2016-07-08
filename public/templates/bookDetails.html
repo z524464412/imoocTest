@@ -1,0 +1,80 @@
+<div ng-controller="BookDetailCtrl">
+    <form class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="upload/{{bookDetail.img}}" alt="用AngularJS开发下一代WEB应用" width="80%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a ui-sref="bookList({bookType:0})" class="btn btn-primary">返回列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <form class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form" name="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                书名：
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static">
+                                    {{bookDetail.name}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                类型：
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static">{{bookDetail.type}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                出版日期：
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static"> {{bookDetail.time}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                作者：
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static"> {{bookDetail.writer}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                定价
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static"> {{bookDetail.price}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                是否有电子书：
+                            </label>
+
+                            <div class="col-md-10">
+                                <p class="form-control-static"> {{bookDetail.Ebook}}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </form>
+</div>

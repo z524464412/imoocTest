@@ -77,7 +77,6 @@ exports.signinRequired = function(req,res,next) {
     }
     next();
 };
-
 //midware for user
 exports.adminRequired = function(req,res,next) {
     var user = req.session.user;

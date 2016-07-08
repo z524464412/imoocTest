@@ -170,7 +170,7 @@ var app =express();
 app.locals.moment = require('moment');
 var dbUrl = 'mongodb://127.0.0.1/imooc';
 mongoose.connect(dbUrl);
-app.set('views', path.join(__dirname, './app/views/pages'));
+app.set('views', path.join(__dirname, './public/views/pages'));
 app.set('view engine','jade');
 app.use(cookieParser());
 app.use(require('connect-multiparty')());
@@ -183,6 +183,6 @@ app.use(express.static(path.join(__dirname,'public')));
 //表单数据格式化
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
 require('./routes/index')(app);
+
 module.exports = app;

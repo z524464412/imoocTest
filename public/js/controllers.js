@@ -18,7 +18,6 @@ bookListModule.controller('BookListCtrl',function($scope,$http,$state,$statePara
             $scope.$apply();
         }
     };
-    console.log($stateParams);
     $scope.getPageDataAsync = function(pageSize,page,searchText){
         setTimeout(function(){
             var data;
@@ -109,8 +108,27 @@ bookListModule.controller('BookListCtrl',function($scope,$http,$state,$statePara
 /**
  * 这里是书籍详情模块
  */
-var bookDetailModule = angular.module("BookDetailModule", []);
-bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $stateParams) {
-    console.log($stateParams);
-    //请模仿上面的代码，用$http到后台获取数据，把这里的例子实现完整
+var bookDetailModule = angular.module("BookDetailModule", ['myApp.services']);
+bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $stateParams,Poll) {
+    //console.log($stateParams)
+    //$scope.polls = Poll.query()
+    //console.log( $scope.polls);
+    $http({
+        method:'GET',
+        url:'/movie/list',
+    }).success(function(data){
+        console.log(data)
+        $scope.bookDetail ={
+            name:data[0].movies[0].title,
+            img:data[0].movies[0].poster,
+            type:'',
+            time:data[0].movies[0].meta.updateAt,
+            writer:data[0].movies[0].doctor,
+            price:data[0].movies[0].year,
+            Ebook:'1'
+        }
+
+    }).error(function(data){
+       alert('获取失败')
+    })
 });

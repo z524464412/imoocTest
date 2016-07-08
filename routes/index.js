@@ -34,6 +34,6 @@ module.exports = function(app){
     //result
     app.get('/results',User.signinRequired,User.adminRequired,Index.search);
 
-    app.get('/admin/angular',User.signinRequired,Category.angular);
-    app.get('*',Category.angular);
+    //app.get('/admin/angular',User.signinRequired,Category.angular);
+    //app.get('*',Category.angular);
 };

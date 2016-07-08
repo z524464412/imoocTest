@@ -2,12 +2,12 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/app/models/category.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/pages/category_admin.jade" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/data" charset="GBK" />
     <file url="file://$PROJECT_DIR$/public/dist/lib/angular-ui-router.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/public/dist/lib/ng-grid-2.0.12" charset="GBK" />
     <file url="file://$PROJECT_DIR$/public/dist/lib/ui-bootstrap-tpls-0.11.0.js" charset="GBK" />
     <file url="file://$PROJECT_DIR$/public/images/angularjs.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/public/views/pages/category_admin.jade" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
