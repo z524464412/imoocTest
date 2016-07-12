@@ -4,14 +4,13 @@ var Movie =require('../app/controllers/movie');
 var Comment =require('../app/controllers/comment');
 var Category =require('../app/controllers/category');
 module.exports = function(app){
-
     app.use(function(req,res,next){
         var _user =req.session.user;
         app.locals.user = _user;
         next();
     });
     //index
-    app.get('/',Index.index);
+    app.get('/movie/list',Index.index);
     //user
     app.post('/user/signup',User.signup);
     app.post('/user/signin',User.signin);

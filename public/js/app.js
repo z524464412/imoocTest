@@ -11,12 +11,12 @@ routerApp.config(function($stateProvider,$urlRouterProvider){
     $stateProvider
         .state('index',{
             url:'/index',
-            views:{
-                '':{
-                    templateUrl:'templates/home.html'
+            views: {
+                '': {
+                    templateUrl: 'templates/home.html'
                 },
-                'main@index':{
-                    templateUrl:'templates/loginForm.html'
+                'main@index': {
+                    templateUrl: 'templates/loginForm.html'
                 }
             }
         })

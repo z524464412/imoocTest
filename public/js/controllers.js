@@ -127,7 +127,6 @@ bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $s
             price:data[0].movies[0].year,
             Ebook:'1'
         }
-
     }).error(function(data){
        alert('获取失败')
     })

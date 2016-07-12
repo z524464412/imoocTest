@@ -8,13 +8,12 @@ exports.index = function(req,res){
             if(err){
                 console.log(err);
             }
-            categories.aa = req.query.pollId;
-            console.log(categories.aa)
-            //res.json(categories)
-            res.render('index', {
-                title: 'imooc 首页',
-                categories: categories
-            });
+            console.log(categories);
+            res.json(categories)
+            //res.render('index', {
+            //    title: 'imooc 首页',
+            //    categories: categories
+            //});
         });
 };
 

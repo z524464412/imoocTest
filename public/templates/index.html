@@ -1,0 +1,46 @@
+<div ng-controller="MovieListCtrl">
+    <div class="container">
+        <div class="row">
+            <!--<div>-->
+                <!--&lt;!&ndash;{{categories}}&ndash;&gt;-->
+            <!--</div>-->
+            <div class="panel panel-default" ng-repeat="cat in categories">
+                <div class="panel-heading">
+                    <h3>
+                    <span>
+                        {{cat.name}}
+                    </span>
+                        <a href='/results?cat={{cat._id}}&p=0' class="pull-right">
+                            查看更多
+                        </a>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div ng-if="cat.movies">
+                        <div ng-repeat="movie in cat.movies">
+                            <div class="col-md-2">
+                                <div class="thumbnail">
+                                    <a href="/movie/detail/{{movie._id}}">
+                                        <img src="upload/{{movie.poster}}" alt="{{movie.title}}">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>
+                                        {{movie.title}}
+                                    </h3>
+                                    <p>
+                                        <a class="btn btn-primary" href="/movie/detail/{{movie._id}}",role=""button>
+                                            观看预告片
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

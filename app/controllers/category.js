@@ -28,7 +28,7 @@ exports.list = function(req, res) {
     });
 };
 exports.angular = function(req,res){
-    res.render('angular', {
+    res.render('index', {
         title: 'imooc 分类列表页',
     });
 };

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="imoocApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="dist/lib/jquery/2.1.1/jquery.js"></script>
+    <link href="dist/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="dist/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="dist/lib/angular-1.2.16/angular.js"></script>
+    <script src="dist/lib/angular-ui-router.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<script src="javascript/app.js"></script>
+<script src="javascript/controllers/user.js"></script>
+<script src="javascript/controllers/movie.js"></script>
+<script src="directives/nav.js"></script>
+<script src="service/user.js"></script>
+<body ng-controller="ApplicationController">
+<div ng-include="'views/includes/header.html'"></div>
+<div ui-view></div>
+</body>
+</html>

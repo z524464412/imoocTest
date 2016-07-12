@@ -21,28 +21,30 @@ exports.signup = function(req,res){
     })
 };
 exports.signin = function(req,res){
-    var _user =req.body.user;
-    var name =_user.name;
+    var _user =req.body;
+    var name =_user.username;
     var password =_user.password;
+    if(!_user){
+        console.log('操作失败');
+       return
+    }
     User.findOne({name:name},function(err,user){
         if(err){
             console.log(err);
         }
         if(!user){
-            return res.redirect('/');
+            return res.redirect('/index');
         }
         user.comparePassword(password,function(err,isMatch){
             if(err){
                 console.log(err)
             }
-            console.log(isMatch);
             if(isMatch){
                 req.session.user = user;
-
-                console.log('PassWord is matched');
-                return res.redirect('/')
+                console.log('密码匹配成功');
+                return res.json({status:1,result:user});
             }else{
-                console.log('PassWord is not matched');
+                return res.json({status:0});
             }
         });
     })
