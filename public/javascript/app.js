@@ -93,4 +93,8 @@ imoocApp.config(function($stateProvider,$urlRouterProvider,USER_ROLES){
             url:'/user/singin',
             templateUrl:'views/includes/header.html'
         })
+        .state('movie/detail',{
+            url:'/movie/detail/:id',
+            templateurl:'views/pages/detail.html'
+        })
 });

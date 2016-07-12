@@ -10,7 +10,7 @@ module.exports = function(app){
         next();
     });
     //index
-    app.get('/movie/list',Index.index);
+    app.get('/',Index.index);
     //user
     app.post('/user/signup',User.signup);
     app.post('/user/signin',User.signin);

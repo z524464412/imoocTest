@@ -33,7 +33,7 @@ exports.signin = function(req,res){
             console.log(err);
         }
         if(!user){
-            return res.redirect('/index');
+            return res.redirect('/');
         }
         user.comparePassword(password,function(err,isMatch){
             if(err){
@@ -42,9 +42,11 @@ exports.signin = function(req,res){
             if(isMatch){
                 req.session.user = user;
                 console.log('密码匹配成功');
-                return res.json({status:1,result:user});
+                //return res.json({status:1,result:user});
+                return res.redirect('/');
             }else{
-                return res.json({status:0});
+                //return res.json({status:0});
+                return res.redirect('/');
             }
         });
     })
