@@ -45,7 +45,8 @@ imoocApp.service('Session', function () {
     };
     return this;
 })
-imoocApp.factory('AuthService',function($http,Session){
+imoocApp.factory('AuthService',['$http','Session',function($http,Session){
+
     var authService = {};
     authService.login = function(credentials){
         console.log(credentials);
@@ -56,6 +57,7 @@ imoocApp.factory('AuthService',function($http,Session){
                 })
             .then(function(res){
                 console.log(res)
+                console.log( Session.create(0,res.data.result.id,res.data.result.role))
                     Session.create(0,res.data.result.id,res.data.result.role);
                 return res.data.result;
             })
@@ -70,7 +72,7 @@ imoocApp.factory('AuthService',function($http,Session){
         return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.userRole)!== -1);
     }
     return authService;
-});
+}]);
 imoocApp.controller('ApplicationController',function($scope,USER_ROLES,AuthService){
     $scope.currentUser =null;
     $scope.userRoles = USER_ROLES;
@@ -95,6 +97,7 @@ imoocApp.config(function($stateProvider,$urlRouterProvider,USER_ROLES){
         })
         .state('movie/detail',{
             url:'/movie/detail/:id',
-            templateurl:'views/pages/detail.html'
+            templateUrl:'views/pages/detail.html',
+
         })
 });

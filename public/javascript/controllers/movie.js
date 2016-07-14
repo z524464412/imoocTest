@@ -10,14 +10,21 @@ MovieListModule.controller('MovieListCtrl',function($scope,$http){
         alert('获取失败')
     })
 });
-MovieListModule.controller('MovieDetailCtrl',function($scope,$http){
+MovieListModule.controller('MovieDetailCtrl',function($scope,$http,$stateParams){
+    console.log($stateParams);
     $http({
         method:'GET',
-        url:'/movie/list'
+        url:'/movie/detail/'+$stateParams.id,
     }).success(function(data){
         console.log(data);
-        $scope.categories =data;
+        $scope.movie = data.movie;
+        $scope.comments = data.comments;
     }).error(function(data){
         alert('获取失败')
     })
+});
+MovieListModule.controller('commentCtrl',function($scope,$http,$stateParams){
+    $scope.comments ={
+
+    }
 })

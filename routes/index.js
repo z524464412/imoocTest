@@ -11,6 +11,7 @@ module.exports = function(app){
     });
     //index
     app.get('/',Index.index);
+    app.get('/movie/list',Index.index);
     //user
     app.post('/user/signup',User.signup);
     app.post('/user/signin',User.signin);

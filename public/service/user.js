@@ -13,6 +13,7 @@ UserService.service('Session',function(){
     return this;
 });
 UserService.factory('AuthService',function($http,Session){
+    console.log(Session);
     var authService = {};
     authService.login = function(credentials){
         return $http

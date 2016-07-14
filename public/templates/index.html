@@ -17,7 +17,7 @@
                         <div ng-repeat="movie in cat.movies">
                             <div class="col-md-2">
                                 <div class="thumbnail">
-                                    <a href="/movie/detail/{{movie._id}}">
+                                    <a ui-sref="movie/detail({id:movie._id})">
                                         <img src="upload/{{movie.poster}}" alt="{{movie.title}}">
                                     </a>
                                 </div>
@@ -26,7 +26,7 @@
                                         {{movie.title}}
                                     </h3>
                                     <p>
-                                        <a class="btn btn-primary" href="/movie/detail/{{movie._id}}",role="button">
+                                        <a class="btn btn-primary" ui-sref="movie/detail({id:movie._id})">
                                             观看预告片
                                         </a>
                                     </p>

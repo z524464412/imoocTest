@@ -108,11 +108,9 @@ bookListModule.controller('BookListCtrl',function($scope,$http,$state,$statePara
 /**
  * 这里是书籍详情模块
  */
-var bookDetailModule = angular.module("BookDetailModule", ['myApp.services']);
-bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $stateParams,Poll) {
-    //console.log($stateParams)
-    //$scope.polls = Poll.query()
-    //console.log( $scope.polls);
+var bookDetailModule = angular.module("BookDetailModule", []);
+bookDetailModule.controller('BookDetailCtrl', function($scope, $http, $state, $stateParams) {
+    console.log($stateParams)
     $http({
         method:'GET',
         url:'/movie/list',

@@ -175,7 +175,7 @@ app.set('view engine','jade');
 app.use(cookieParser());
 app.use(require('connect-multiparty')());
 app.use(cookieSession({
-    name:'session',
+    name:'session1111',
     keys:['key1','key2'],
 }));
 //静态资源请求路径

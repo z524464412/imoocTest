@@ -21,7 +21,9 @@ exports.signup = function(req,res){
     })
 };
 exports.signin = function(req,res){
-    var _user =req.body;
+    //var _user =req.body.user;
+    var _user = req.body
+    console.log(req.body)
     var name =_user.username;
     var password =_user.password;
     if(!_user){
@@ -42,11 +44,11 @@ exports.signin = function(req,res){
             if(isMatch){
                 req.session.user = user;
                 console.log('密码匹配成功');
-                //return res.json({status:1,result:user});
-                return res.redirect('/');
+                return res.json({status:1,result:user});
+                //return res.redirect('/');
             }else{
-                //return res.json({status:0});
-                return res.redirect('/');
+                return res.json({status:0});
+                //return res.redirect('/');
             }
         });
     })

@@ -6,19 +6,28 @@ var fs = require('fs');
 var path = require('path');
 //detail page
 exports.detail =function(req, res) {
+    console.log(req.params.id);
     var id = req.params.id;
     Movie.findById(id, function(err, movie) {
+        console.log(movie)
         Comment
             .find({movie:id})
             .populate('from','name')
             .populate('reply.from replay.to','name')
             .exec(function(err,comments){
-            res.render('detail', {
-                title: 'demo1' + movie.title,
-                id: id,
-                movie: movie,
-                comments:comments
-            });
+                console.log(comments)
+                res.json(
+                    result = {
+                        id: id,
+                        movie: movie,
+                        comments:comments
+                    });
+            //res.render('detail', {
+            //    title: 'demo1' + movie.title,
+            //    id: id,
+            //    movie: movie,
+            //    comments:comments
+            //});
         })
     })
 };
