@@ -1,0 +1,22 @@
+{
+  "name": "bootstrap.js",
+  "version": "3.2.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sorrycc/bootstrap.js.git"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "bootstrap.js",
+    "dependencies": {
+      "jquery": "1.10.1"
+    },
+    "ignore": [
+      "sea-modules"
+    ]
+  }
+}

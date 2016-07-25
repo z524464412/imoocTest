@@ -10,14 +10,14 @@ exports.index = function(req,res){
             }
             console.log(categories);
             //使用angular
-            res.json(categories)
+            //res.json(categories)
             /**
              * 不使用angular
              */
-            //res.render('index', {
-            //    title: 'imooc 首页',
-            //    categories: categories
-            //});
+            res.render('index', {
+                title: 'imooc 首页',
+                categories: categories
+            });
         });
 };
 

@@ -1,0 +1,218 @@
+<h2 id="writing-extensions-repeater">Repeater Views</h2>
+<p>The repeater view object contains various attributes used to render data within the repeater control. Each
+	view includes a unique name that is selectable via the <code>.repeater-views</code> classed button group. The <code>$.fn.repeater.views</code> object adds the view object upon load using the unique view name as a key.
+	Find more information on creating a repeater view extension below.
+</p>
+
+<h3>Default Options and Methods</h3>
+<p>Here are examples for adding default options and methods in your repeater view extension:
+{% highlight js %}
+//Adding default options to the repeater
+$.fn.repeater.defaults = $.extend({}, $.fn.repeater.defaults, {
+  myView_additionalOption: false,
+  myView_anotherOption: 'Hello World'
+});
+
+//Adding methods to the repeater
+$.fn.repeater.Constructor.prototype.myView_additionalMethod = function () {
+  //Do stuff here
+};
+{% endhighlight %}
+</p>
+
+<h3>View Object</h3>
+<p>The main view object serves as the base for the repeater view extension. It's definition looks something like this:
+{% highlight js %}
+//View extension definition
+$.fn.repeater.viewTypes.myView = {
+  cleared: function (helpers) {
+    //Do stuff here
+  }
+
+  //Additional attributes listed as needed
+};
+{% endhighlight %}
+	The view object can contain a variety of attributes. All functions within the repeater view object are called with
+	the repeater instance's context of <code>this</code>. The functions receive a <code>helpers</code> object,
+	and in some cases a <code>callback</code> function. If a callback function is present, it must be called to proceed
+	to the next step. The following attributes can be defined when developing a repeater view extension:</p>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead>
+		<tr>
+			<th style="width: 100px;">Name</th>
+			<th style="width: 100px;">type</th>
+			<th>description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>cleared</td>
+			<td>function</td>
+			<td>Runs whenever the repeater canvas is cleared. Provided a <code>helpers</code> object containing the
+				current repeater render <code>options</code>.
+			</td>
+		</tr>
+		<tr>
+			<td>dataOptions</td>
+			<td>function</td>
+			<td>This function is called prior to calling the dataSource, allowing a view extension to provide additional options
+				to the dataSource. Provided a <code>options</code> object as an argument, which is populated with current
+				dataSource options and is expected to be passed back via the <code>return</code> statement after any
+				manipulation in order to provide the repeater the newly altered dataSource options.
+			</td>
+		</tr>
+		<tr>
+			<td>initialize</td>
+			<td>function</td>
+			<td>Runs only once at the beginning of each instantiation of the repeater. Provided a <code>helpers</code>
+				object and <code>callback</code> function, which must be called in order for the repeater to proceed.
+			</td>
+		</tr>
+		<tr>
+			<td>resize</td>
+			<td>function</td>
+			<td>Runs whenever the repeater is resized. Provided a helpers object containing <code>width</code> and
+				<code>height</code> of the repeater.
+			</td>
+		</tr>
+		<tr>
+			<td>selected</td>
+			<td>function</td>
+			<td>Runs every time this repeater view is selected prior to rendering. Provided a helpers object containing
+				the previous repeater view (<code>prevView</code>)</td>
+		</tr>
+		<tr>
+			<td>before</td>
+			<td>function</td>
+			<td>This function is called prior to the <code>renderItems</code> function, if no <code>render</code> function has been defined.
+				Provided a <code>helpers</code> object containing the parent <code>container</code> (the repeater canvas)
+				for items to be inserted and <code>data</code> returned from the dataSource. Expects to be returned an
+				<a href="#writing-extensions-repeater-itemObject">item object</a>, or <code>false</code> if no action is desired.
+			</td>
+		</tr>
+		<tr>
+			<td>renderItem</td>
+			<td>function</td>
+			<td>This function is called after the <code>before</code> function, if no <code>render</code> function has been defined.
+				It is iterated over the array specified by the <code>repeat</code> attribute. It is provided a <code>helpers</code>
+				object containing the parent <code>container</code> (which will be whatever element within the repeater canvas
+				has the <code>data-container="true"</code> attribute, or the canvas itself if not found) for items to be inserted,
+				the <code>data</code> returned from the dataSource, the <code>index</code> of the current item within the iteration,
+				and the <code>subset</code> array of data that the renderItem function is being iterated on. Expects to be returned an
+				<a href="#writing-extensions-repeater-itemObject">item object</a>, or <code>false</code> if no action is desired.
+			</td>
+		</tr>
+		<tr>
+			<td>repeat</td>
+			<td>string</td>
+			<td>This string value specifies which array the <code>renderItem</code> function iterates over. It represents
+				an attribute of an object using dot notation. The root level value must use <code>'data'</code> or
+				<code>'this'</code>. If the root value uses <code>'data'</code>, the root object will be the <code>data</code>
+				object returned from the <code>dataSource</code>. If the root value uses <code>'this'</code>, the root object
+				will be the current repeater instance context of <code>this</code>. You can specify further levels separated
+				by dots. The final level must include an array or iteration will not function correctly. This array will
+				be passed as the <code>subset</code> attribute in the <code>helpers</code> object of the <code>renderItem</code>
+				function. The default value is <code>'data.items'</code>
+			</td>
+		</tr>
+		<tr>
+			<td>after</td>
+			<td>function</td>
+			<td>This function is called after the renderItems function, if no <code>render</code> function has been defined.
+				Provided a <code>helpers</code> object containing the parent <code>container</code> (the repeater canvas)
+				for items to be inserted and <code>data</code> returned from the dataSource. Expects to be returned an
+				<a href="#writing-extensions-repeater-itemObject">item object</a>, or <code>false</code> if no action is desired.
+			</td>
+		</tr>
+		<tr>
+			<td>render</td>
+			<td>function</td>
+			<td>If defined, <code>before</code>, <code>renderItem</code>, and <code>after</code> will be ignored,
+				and this function will be called instead. It is provided a <code>helpers</code> object containing the
+				parent <code>container</code> (the repeater canvas) for items to be inserted and <code>data</code> returned
+				from the dataSource, as well as a <code>callback</code> function. The <code>callback</code> function must
+				be called in order for the repeater to complete rendering. With this function, it is up to the view extension
+				developer to append contents to the <code>container</code> as they see fit.
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- ./fu-table-responsive -->
+
+<h3 id="writing-extensions-repeater-itemObject">Item Object</h3>
+<p>The <code>before</code>, <code>renderItem</code>, and <code>after</code> functions can be returned item objects, which
+	specify certain actions to be carried out by the repeater, such as inserting content:</p>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead>
+		<tr>
+			<th style="width: 100px;">Name</th>
+			<th style="width: 260px;">type</th>
+			<th>description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>item</td>
+			<td>string, jQuery object, or DOM node</td>
+			<td>Specifies the content to be inserted into the <code>container</code>. If not specified, no action will be taken.</td>
+		</tr>
+		<tr>
+			<td>action</td>
+			<td>string</td>
+			<td>Optional. Specifies the jQuery mechanism of action to insert <code>item</code> content. If not specified, the default action will be
+				<code>'append'</code>. Any of the <a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">jQuery insertion methods</a>
+				can be used. If set to <code>'none'</code>, no insertion will occur.
+			</td>
+		</tr>
+		<tr>
+			<td>container</td>
+			<td>jQuery object, DOM node, or selector</td>
+			<td>Optional. Specifies which element to insert the <code>item</code> content. If not specified, the default
+				will be whatever the <code>container</code> was in the <code>helpers</code> object of the function that
+				returned the items object.
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- ./fu-table-responsive -->
+
+<h3 id="writing-extensions-repeater-dataAttr">Data Attributes</h3>
+<p>You can add a few data-attributes to any markup when rendering content to specify different
+	rendering behaviors:
+</p>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead>
+		<tr>
+			<th style="width: 100px;">Name</th>
+			<th style="width: 150px;">Value(s)</th>
+			<th>description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>data-container</td>
+			<td>"true"</td>
+			<td>If you add this value to an element within the repeater canvas in the <code>before</code> function,
+				that element will become the <code>container</code> that is passed to the <code>renderItem</code> function.
+			</td>
+		</tr>
+		<tr>
+			<td>data-infinite</td>
+			<td>"true"</td>
+			<td>If infinite scrolling is enabled, the element with this attribute becomes the infinite scrolling container.</td>
+		</tr>
+		<tr>
+			<td>data-preserve</td>
+			<td>"deep" or "shallow"</td>
+			<td>The repeater will preserve an element containing this attribute upon clearing the repeater of content.
+				This clear occurs during each <code>dataSource</code> call. Set the value to <code>"deep"</code>
+				to preserve the element and all children. Set the value to <code>"shallow"</code> to preserve just the
+				element and remove any child nodes not marked with <code>data-preserve</code>.
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div><!-- ./fu-table-responsive -->

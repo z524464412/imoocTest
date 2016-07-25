@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "underscore": "1.x",
+    "fuelux": "3.x",
+    "requirejs": "2.x",
+    "bootstrap": "3.x",
+    "moment": "2.x",
+    "backbone": "1.x",
+    "requirejs-text": "2.x"
+  },
+  "ignore": [
+    "**/.*",
+    "_*"
+  ],
+  "name": "fueluxdocs",
+  "version": "3.6.4"
+}

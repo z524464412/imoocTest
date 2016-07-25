@@ -1,0 +1,12 @@
+script(src="/js/sea.js" id="seajsnode")
+script.
+    if(seajs.production) {
+        seajs.use('soa',function(){
+            seajs.use('index',callback)
+        });
+    }else{
+        seajs.use('index',callback)
+    }
+    function callback(m) {
+        m.init();
+    }

@@ -1,0 +1,263 @@
+<!-- checkbox
+================================================== -->
+<div class="fu-docs-section">
+  <h1 id="checkbox" class="page-header">Checkbox <a href="{{ site.repo }}/blob/{{ site.current_version }}/js/checkbox.js"><small>checkbox.js</small></a></h1>
+
+  <p>The checkbox control provides a customized look and feel that can be standardized across all browsers.</p>
+  <label class="checkbox-custom checkbox-inline" data-initialize="checkbox"  id="myCheckbox7">
+    <input class="sr-only" type="checkbox" value="option3"> <span class="checkbox-label">checkbox</span>
+  </label>
+
+  <h2 id="checkbox-usage">Usage</h2>
+  <h3 id="checkbox-usage-javascript">Via JavaScript</h3>
+  <p>Initialize the checkbox control via JavaScript:</p>
+  {% highlight js %}$('#myCheckbox').checkbox();{% endhighlight %}
+
+  <h3 id="checkbox-usage-data-attributes">Via data-attributes</h3>
+  <ul>
+    <li>Checkbox input elements that exist when <code>$.ready()</code> executes that have <code>data-initialize="checkbox"</code> on their parent will be initialized immediately.</li>
+    <li>Checkbox input elements that are created with <code>data-initialize="checkbox"</code> after <code>$.ready()</code> executes will initialize when a <code>mouseover</code> event occurs on them.</li>
+  </ul>
+
+  <h3 id="checkbox-usage-methods">Methods</h3>
+  <p>Once your checkbox is <a href="#checkbox-usage">initialized</a>, you can execute any of the following methods on it:</p>
+
+  <dl>
+    <dt>.checkbox('check')</dt>
+    <dd>Ensures the checkbox is checked.</dd>
+
+    <dt>.checkbox('destroy')</dt>
+    <dd>Removes all functionality, jQuery data, and the markup from the DOM. Returns string of control markup as close to it's pre-initialization state as possible.</dd>
+
+    <dt>.checkbox('disable')</dt>
+    <dd>Ensures the checkbox is disabled.</dd>
+
+    <dt>.checkbox('enable')</dt>
+    <dd>Ensures the checkbox is enabled.</dd>
+
+    <dt>.checkbox('isChecked')</dt>
+    <dd>Returns <code>true</code> or <code>false</code> indicating the checked state of the checkbox.</dt>
+
+    <dt>.checkbox('toggle')</dt>
+    <dd>Toggles the checkbox between checked/unchecked states.</dd>
+
+    <dt>.checkbox('uncheck')</dt>
+    <dd>Ensures the checkbox is unchecked.</dd>
+
+  </dl>
+
+  <h3 id="checkbox-usage-events">Events</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>enabled.fu.checkbox</td>
+        <td>Event fires when checkbox is enabled</td>
+      </tr>
+      <tr>
+        <td>disabled.fu.checkbox</td>
+        <td>Event fires when checkbox is disabled</td>
+      </tr>
+      <tr>
+        <td>checked.fu.checkbox</td>
+        <td>Event fires when checkbox is checked</td>
+      </tr>
+      <tr>
+        <td>unchecked.fu.checkbox</td>
+        <td>Event fires when checkbox is unchecked</td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!-- ./fu-table-responsive -->
+
+  <p>All checkbox events are fired on the <code>.checkbox</code> classed element. However, unlike the majority of Fuel UX controls, it is recommended to listen to and check the state of the checkbox control by listening to the native checkbox with the <code>change</code> event and check its status with the presence of the <code>checked</code> attribute. For the sample markup provided, this would be:</p>
+{% highlight js %}
+$('.checkbox input').on('change', function () {
+  console.log( $(this).is(':checked') );
+});
+{% endhighlight %}
+
+
+  <h2 id="checkbox-examples">Examples</h2>
+
+  <h4 id="checkbox-examples-default">Default (stacked)</h4>
+  <div class="fu-example section">
+    <div id="myCheckbox" class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" type="checkbox" value="option1">
+        <span class="checkbox-label">Custom checkbox unchecked on page load</span>
+      </label>
+    </div>
+    <div class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" checked="checked" type="checkbox" value="option2">
+        <span class="checkbox-label">Custom checkbox checked on page load</span>
+      </label>
+    </div>
+    <div class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" disabled="disabled" type="checkbox" value="option3">
+        <span class="checkbox-label">Disabled custom checkbox unchecked on page load</span>
+      </label>
+    </div>
+    <div class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" checked="checked" disabled="disabled" type="checkbox" value="option4">
+        <span class="checkbox-label">Disabled custom checkbox checked on page load</span>
+      </label>
+    </div>
+  </div>
+{% highlight html %}
+<div class="checkbox" id="myCheckbox">
+  <label class="checkbox-custom" data-initialize="checkbox">
+    <input class="sr-only" type="checkbox" value="">
+    <span class="checkbox-label">Custom checkbox unchecked on page load</span>
+  </label>
+</div>
+<div class="checkbox" id="myCheckbox2">
+  <label class="checkbox-custom" data-initialize="checkbox">
+    <input class="sr-only" checked="checked" type="checkbox" value="">
+    <span class="checkbox-label">Custom checkbox checked on page load</span>
+  </label>
+</div>
+<div class="checkbox" id="myCheckbox3">
+  <label class="checkbox-custom" data-initialize="checkbox">
+    <input class="sr-only" disabled="disabled" type="checkbox" value="">
+    <span class="checkbox-label">Disabled custom checkbox unchecked on page load</span>
+  </label>
+</div>
+<div class="checkbox" id="myCheckbox4">
+  <label class="checkbox-custom" data-initialize="checkbox">
+    <input class="sr-only" checked="checked" disabled="disabled" type="checkbox" value="">
+    <span class="checkbox-label">Disabled custom checkbox checked on page load</span>
+  </label>
+</div>
+{% endhighlight %}
+
+  <h4 id="checkbox-examples-inline">Inline checkboxes</h4>
+  <p>Use the <code>.checkbox-inline</code> class on checkboxes for controls that appear on the same line.</p>
+  <div class="fu-example section">
+    <label class="checkbox-custom checkbox-inline" data-initialize="checkbox">
+      <input class="sr-only" type="checkbox" value="option1"> <span class="checkbox-label">1</span>
+    </label>
+    <label class="checkbox-custom checkbox-inline" data-initialize="checkbox">
+      <input class="sr-only" checked="checked" type="checkbox" value="option2"> <span class="checkbox-label">2</span>
+    </label>
+    <label class="checkbox-custom checkbox-inline" data-initialize="checkbox">
+      <input class="sr-only" disabled="disabled" type="checkbox" value="option3"> <span class="checkbox-label">3</span>
+    </label>
+  </div>
+{% highlight html %}
+<label class="checkbox-custom checkbox-inline" data-initialize="checkbox"  id="myCheckbox5">
+  <input class="sr-only" type="checkbox" value="option1"> <span class="checkbox-label">1</span>
+</label>
+<label class="checkbox-custom checkbox-inline" data-initialize="checkbox"  id="myCheckbox6">
+  <input class="sr-only" checked="checked" type="checkbox" value="option2"> <span class="checkbox-label">2</span>
+</label>
+<label class="checkbox-custom checkbox-inline" data-initialize="checkbox"  id="myCheckbox7">
+  <input class="sr-only" disabled="disabled" type="checkbox" value="option3"> <span class="checkbox-label">3</span>
+</label>
+{% endhighlight %}
+
+  <h4 id="checkbox-examples-addon">Addon checkboxes</h4>
+  <p>Place any checkbox option within an input group's addon instead of text.</p>
+  <div class="fu-example section">
+    <div class="input-group">
+      <label class="input-group-addon checkbox-custom checkbox-inline" data-initialize="checkbox">
+        <input class="sr-only" type="checkbox" value="option1">
+      </label>
+      <input type="text" class="form-control">
+    </div>
+  </div>
+{% highlight html %}
+  <div class="input-group">
+    <label class="input-group-addon checkbox-custom checkbox-inline" data-initialize="checkbox">
+      <input class="sr-only" type="checkbox" value="option1">
+    </label>
+    <input type="text" class="form-control">
+  </div>
+{% endhighlight %}
+
+  <h4 id="checkbox-examples-element-toggling">Element toggling checkboxes</h4>
+  <p>Use the <code>data-toggle="{{selector}}"</code> to automatically show or hide elements matching the selector within the body upon check or uncheck. This control works with any <a href="http://api.jquery.com/category/selectors/">jQuery selector</a>.
+  </p>
+  <div class="fu-example section">
+    <div class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" data-toggle="#checkboxToggleID" type="checkbox" value="option1">
+        <span class="checkbox-label">Toggles element with matching ID</span>
+      </label>
+    </div>
+
+    <div class="checkbox" data-initialize="checkbox">
+      <label class="checkbox-custom">
+        <input class="sr-only" data-toggle=".checkboxToggleCLASS" type="checkbox" value="option1">
+        <span class="checkbox-label">Toggles elements with matching class</span>
+      </label>
+    </div>
+
+    <div class="alert bg-info" id="checkboxToggleID">ID toggling container</div>
+    <div class="alert bg-success checkboxToggleCLASS">Class toggling container</div>
+    <div class="alert bg-success checkboxToggleCLASS">Class toggling container</div>
+  </div>
+{% highlight html %}
+<div class="checkbox" data-initialize="checkbox" id="myCheckbox8">
+  <label class="checkbox-custom">
+    <input class="sr-only" data-toggle="#checkboxToggleID" type="checkbox" value="option1">
+    <span class="checkbox-label">Toggles element with matching ID</span>
+  </label>
+</div>
+<label class="checkbox-custom checkbox-inline" id="myCheckbox9">
+  <input class="sr-only" data-toggle=".checkboxToggleCLASS" type="checkbox" value="option1">
+  <span class="checkbox-label">Toggles elements with matching class.</span>
+</label>
+
+<div class="alert bg-info" id="checkboxToggleID">ID toggling container</div>
+<div class="alert bg-success checkboxToggleCLASS">Class toggling container</div>
+<div class="alert bg-success checkboxToggleCLASS">Class toggling container</div>
+{% endhighlight %}
+
+  <h4 id="checkbox-examples-highlighting">Highlighting checkboxes</h4>
+  <p>Use the <code>.highlight</code> class to add a background highlight upon check.
+  </p>
+  <div class="fu-example section">
+
+    <div class="checkbox highlight">
+      <label class="checkbox-custom highlight" data-initialize="checkbox">
+        <input class="sr-only" type="checkbox" value="option1">
+        This control highlights a block-level checkbox on check
+      </label>
+    </div>
+    <label class="checkbox-custom checkbox-inline highlight" data-initialize="checkbox">
+      <input class="sr-only" type="checkbox" value="option2">
+      This control highlights an inline checkbox on check
+    </label>
+  </div>
+{% highlight html %}
+<div class="checkbox highlight" data-initialize="checkbox" id="myCheckbox10">
+  <label class="checkbox-custom highlight">
+    <input class="sr-only" type="checkbox" value="option1">
+    This control highlights a block-level checkbox on check
+  </label>
+</div>
+<label class="checkbox-custom checkbox-inline highlight"  id="myCheckbox11">
+  <input class="sr-only" type="checkbox" value="option2">
+  This control highlights an inline checkbox on check
+</label>
+{% endhighlight %}
+
+ <h3>Events</h3>
+    <p>Unlike the majority of Fuel UX controls, it is recommended to listen to and check the state of the checkbox control by listening to the native checkbox with the <code>change</code> event and check its status with the presence of the <code>checked</code> attribute. For the sample markup provided, this would be:</p>
+{% highlight js %}
+$('.checkbox input').on('change', function () {
+  console.log( $(this).is(':checked') );
+});
+{% endhighlight %}
+
+</div>

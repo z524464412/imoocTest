@@ -1,0 +1,25 @@
+{
+  "name": "ztree",
+  "version": "3.5.16",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zTree/zTree_v3.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "js/jquery.ztree.all-3.5.js",
+    "dependencies": {
+      "jquery": "2.1.1"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  }
+}

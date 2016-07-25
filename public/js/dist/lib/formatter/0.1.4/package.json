@@ -1,0 +1,18 @@
+{
+  "name": "formatter",
+  "version": "0.1.4",
+  "description": "Format user input to match a specified pattern",
+  "homepage": "http://firstopinion.github.io/formatter.js",
+  "author": "Jarid Margolin <jarid@firstopinion.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firstopinion/formatter.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/easy-js/easy-amdtest/issues"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js"
+  }
+}

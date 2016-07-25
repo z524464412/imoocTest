@@ -16,18 +16,18 @@ exports.detail =function(req, res) {
             .populate('reply.from replay.to','name')
             .exec(function(err,comments){
                 console.log(comments)
-                res.json(
-                    result = {
-                        id: id,
-                        movie: movie,
-                        comments:comments
-                    });
-            //res.render('detail', {
-            //    title: 'demo1' + movie.title,
-            //    id: id,
-            //    movie: movie,
-            //    comments:comments
-            //});
+                //res.json(
+                //    result = {
+                //        id: id,
+                //        movie: movie,
+                //        comments:comments
+                //    });
+            res.render('detail', {
+                title: 'demo1' + movie.title,
+                id: id,
+                movie: movie,
+                comments:comments
+            });
         })
     })
 };

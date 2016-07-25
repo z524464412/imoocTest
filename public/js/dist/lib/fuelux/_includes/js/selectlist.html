@@ -1,0 +1,170 @@
+<!-- selectlist
+================================================== -->
+<div class="fu-docs-section">
+  <h1 id="selectlist" class="page-header">Selectlist <a href="{{ site.repo }}/blob/{{ site.current_version }}/js/selectlist.js"><small>selectlist.js</small></a></h1>
+
+  <p>A single select drop-down similar to the native <code>select</code> control, but standardized to look the same across browsers.</p>
+
+  <div class="form-group">
+    <label class="control-label" for="selectlistIllustrationInput">selectlist</label>
+    <div class="input-group">
+
+      <div class="btn-group selectlist" data-resize="auto" data-initialize="selectlist" id="selectlistIllustration">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+          <span class="selected-label"></span>
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li data-value="1"><a href="#">One</a></li>
+          <li data-value="2" data-selected="true"><a href="#">Two</a></li>
+          <li data-value="3"><a href="#">Three</a></li>
+          <li data-value="4" data-foo="bar" data-fizz="buzz"><a href="#">Buzz</a></li>
+          <li data-value="Item Five"><a href="#">Item Five</a></li>
+        </ul>
+        <input class="hidden hidden-field" name="selectlistIllustrationInput" id="selectlistIllustrationInput" readonly="readonly" aria-hidden="true" type="text"/>
+      </div>
+    </div>
+  </div>
+
+
+  <h2 id="selectlist-usage">Usage</h2>
+
+  <h3 id="selectlist-usage-javascript">Via JavaScript</h3>
+  <p>Call the selectlist control via JavaScript:</p>
+  {% highlight js %}$('#mySelectlist').selectlist();{% endhighlight %}
+
+  <h3 id="selectlist-usage-data-attributes">Via data-attributes</h3>
+
+  <p>Add <code>data-initialize="selectlist"</code> to the <code>.selectlist</code> element that you wish to initialize on <code>$.ready()</code>. Any selectlist that is programmatically generated after the initial page load will initialize when the <code>mousedown</code> event is fired on it if it has <code>data-initialize="selectlist"</code>.</p>
+
+
+  <h3 id="selectlist-usage-markup">Markup</h3>
+  <p>Wrap <code>class="selectlist"</code> around an input and a button within a <code>class="fuelux"</code> container.</p>
+{% highlight html %}
+<div class="btn-group selectlist" data-resize="auto" data-initialize="selectlist" id="mySelectlist">
+  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+    <span class="selected-label"></span>
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li data-value="1"><a href="#">One</a></li>
+    ...
+  </ul>
+  <input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text"/>
+</div>
+{% endhighlight %}
+
+  <h3 id="selectlist-usage-methods">Methods</h3>
+  <dl>
+    <dt id="selectlist-usage-methods-destroy">.selectlist('destroy')</dt>
+    <dd>Removes all functionality, jQuery data, and the markup from the DOM. Returns string of control markup.</dd>
+
+    <dt id="selectlist-usage-methods-disable">.selectlist('disable')</dt>
+    <dd>Ensures the component is disabled</dd>
+
+    <dt id="selectlist-usage-methods-enable">.selectlist('enable')</dt>
+    <dd>Ensures the component is enabled</dd>
+
+    <dt id="selectlist-usage-methods-selectedItem">.selectlist('selectedItem')</dt>
+    <dd>Returns an object containing the jQuery data() contents of the selected item. This data includes <code>.data-*</code> attributes plus a text property with the visible text from the item.</dd>
+
+    <dt id="selectlist-usage-methods-selectByIndex">.selectlist('selectByIndex')</dt>
+    <dd>
+      Set the selected item based on its index in the list (zero-based index). Convenience method for <code>.selectBySelector('li:eq({index})')</code>
+      {% highlight js %}$('#mySelectlist').selectlist('selectByIndex', 1);{% endhighlight %}
+    </dd>
+
+    <dt id="selectlist-usage-methods-selectByText">.selectlist('selectByText')</dt>
+    <dd>
+      Set the selected item based on its text value
+      {% highlight js %}$('#mySelectlist').selectlist('selectByText', 'Four');{% endhighlight %}
+    </dd>
+
+    <dt id="selectlist-usage-methods-selectBySelector">.selectlist('selectBySelector')</dt>
+    <dd>
+      Set the selected item based on a selector
+      {% highlight js %}$('#mySelectlist').selectlist('selectBySelector', 'li[data-fizz=buzz]');{% endhighlight %}
+    </dd>
+
+    <dt id="selectlist-usage-methods-selectByValue">.selectlist('selectByValue')</dt>
+    <dd>
+      Set the selected item based on its <code>data-value</code> attribute value. Convenience method for <code>.selectBySelector('data-value={value}')</code>.
+      {% highlight js %}$('#mySelectlist').selectlist('selectByValue', 'foo');{% endhighlight %}
+    </dd>
+  </dl>
+
+  <h3 id="selectlist-usage-events">Events</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 150px;">Event Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>changed.fu.selectlist</td>
+          <td>This event fires when the value changes by selecting an item from the list. Arguments include <code>event, data</code> where data represents the same object structure returned by the <code>selectedItem</code> method.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- ./fu-table-responsive -->
+  <p>All selectlist events are fired on the <code>.selectlist</code> classed element.</p>
+{% highlight js %}
+$('#mySelectlist').on('changed.fu.selectlist', function () {
+  // do something
+});
+{% endhighlight %}
+
+  <h2 id="selectlist-examples">Examples</h2>
+  <p>A single select drop-down similar to the native <code>select</code> control. Wrap the input and selectlist button within <code>.fuelux .selectlist</code></p>
+  <div class="fu-example section">
+    <div class="form-group">
+      <label class="control-label" for="mySelectlistHiddenInput">With auto-resize</label>
+      <div class="input-group">
+
+        <div class="btn-group selectlist" data-resize="auto" data-initialize="selectlist" id="mySelectlist">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+            <span class="selected-label"></span>
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li data-value="1"><a href="#">One</a></li>
+            <li data-value="2" data-selected="true"><a href="#">Two</a></li>
+            <li data-value="3"><a href="#">Three</a></li>
+            <li data-value="4" data-foo="bar" data-fizz="buzz"><a href="#">Buzz</a></li>
+            <li data-value="Item Five"><a href="#">Item Five</a></li>
+          </ul>
+          <input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text"/>
+        </div>
+
+    </div>
+
+    </div>
+
+    <br/>
+    <h5 id="selectlist-examples-sample-methods">Sample Methods <small>(output sent to browser console)</small></h5>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" id="btnSelectlistSelectedItem">log selected item/value</button>
+      <button type="button" class="btn btn-default" id="btnSelectlistSelectByValue">set by value (3)</button>
+      <button type="button" class="btn btn-default" id="btnSelectlistSelectByIndex">set by element index (zero-based) ('4')</button>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" id="btnSelectlistSelectByText">set by text ('One')</button>
+      <button type="button" class="btn btn-default" id="btnSelectlistSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
+      <button type="button" class="btn btn-default" id="btnSelectlistEnableSelectlist">enable</button>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" id="btnSelectlistDisableSelectlist">disable</button>
+      <button type="button" class="btn btn-default" id="btnSelectlistDestroy">destroy and append</button>
+    </div>
+
+    </div><!-- /example -->
+
+</div>
