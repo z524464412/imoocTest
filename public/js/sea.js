@@ -8,6 +8,7 @@
 
 /*config*/
 seajs.producion = false;
+
 seajs.config({
     alias: {
         /*common*/
@@ -17,11 +18,12 @@ seajs.config({
 
         /*views*/
         //首页
-        index:'src/view/main/index'
-
-
+        index:'src/view/main/index',
+        login:'src/view/main/login',
 
         /*service*/
+        service_core:'src/service/service_core',
+        service_admin:'src/service/service_admin'
 
 
     },

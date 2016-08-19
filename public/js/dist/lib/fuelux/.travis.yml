@@ -1,5 +1,0 @@
-# Exclude any branch containing
-# this gh-pages content
-branches:
-  except:
-    - /^.*$/

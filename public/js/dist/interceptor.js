@@ -447,7 +447,7 @@ define(function(require, exports, module) {
 
     };
     $(function(){
-        Interceptor.init();
+        //Interceptor.init();
     })
 
 });

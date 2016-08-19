@@ -1,11 +1,11 @@
 script(src="/js/sea.js" id="seajsnode")
 script.
     if(seajs.production) {
-        seajs.use('soa',function(){
-            seajs.use('index',callback)
+        seajs.use('imooc',function(){
+            seajs.use(VIEW,callback)
         });
     }else{
-        seajs.use('index',callback)
+        seajs.use(VIEW,callback)
     }
     function callback(m) {
         m.init();

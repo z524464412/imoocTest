@@ -5,27 +5,37 @@ exports.index = function(req,res){
     });
     //res.sendfile("public/views/pages/admin/main.jade");
 };
+
+
+exports.signinPage = function(req,res){
+    res.render('login/signinPage');
+};
+exports.signupPage = function(req,res){
+    res.render('login/signupPage');
+};
 exports.signup = function(req,res){
-    var _user =req.body.user;
+    var _user = req.body.param;
     User.find({name: _user.name},function(err,user){
-        console.log(user)
         if(err){
             console.log(err);
         }
         if(!user){
             return res.redirect('/');
         }else{
-            var user = new User(_user);
+            var user = new User(user);
             user.save(function(err,user){
                 console.log(user);
                 if(err){
                     console.log(err)
                 }
-                res.redirect('/admin/user/list');
+                //return res.json({status:1,result:user});
+
+               //return res.redirect('/admin/user/list');
             });
         }
     })
 };
+
 exports.signin = function(req,res){
     var _user =req.body.user;
     //var _user = req.body

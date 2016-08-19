@@ -169,6 +169,7 @@ var cookieSession = require('cookie-session');
 var app =express();
 app.locals.moment = require('moment');
 var dbUrl = 'mongodb://127.0.0.1/imooc';
+
 mongoose.connect(dbUrl);
 app.set('views', path.join(__dirname, './public/views/pages'));
 app.set('view engine','jade');
