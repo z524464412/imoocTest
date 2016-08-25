@@ -1,27 +1,24 @@
 extends ../../layout
-
 block content
-   #mainer
-       #mainer-inner
-           #area-login
-               .block.l
-                   .bg-login
-               .block.r
-                   .userbox-login
-                       #form-login
-                           h3.title 注册账号
-                           .userbox-input
-                               i.icon.icon-user
-                               input(id="username" type="text" placeholder="请输入账号")
-                           .userbox-input
-                               i.icon.icon-lock
-                               input(id="password" type="password" placeholder="请输入密码")
-                           .userbox-input
-                               i.icon.icon-lock
-                               input(id="confirmPWD" type="password" placeholder="确认密码")
-                           .userbox-tool
-                               a.btn.btn-info(href="/user/signupPage") 登陆
-                               a.btn.btn-default.signinBtn.r 注册
-   span.clearfix
-    script.
-        var VIEW = 'login';
+    #mainer
+        #mainer-inner
+            #area-login
+                .block.l
+                    .bg-login
+                .block.r
+                    .userbox-login
+                        #form-login
+                            h3.title 注册账号
+                            .userbox-input
+                                i.icon.icon-user
+                                input(id="username" type="text" placeholder="请输入账号")
+                            .userbox-input
+                                i.icon.icon-lock
+                                input(id="password" type="password" placeholder="请输入密码")
+                            .userbox-input
+                                i.icon.icon-lock
+                                input(id="confirmPWD" type="password" placeholder="确认密码")
+                            .userbox-tool
+                                a.btn.btn-info(href="/user/signupPage") 登陆
+                                a.btn.btn-default.signinBtn.r 注册
+    span.clearfix

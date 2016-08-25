@@ -11,18 +11,17 @@ module.exports = function(app){
     });
     //index
     app.get('/',Index.index);
-
+    app.get('/movie/list',Index.index);
     //user
     app.post('/user/signup',User.signup);
     app.post('/user/signin',User.signin);
-    app.get('/user/signinPage',User.signinPage);
-    app.get('/user/signupPage',User.signupPage);
+    app.get('/user/signinPage');
+    app.get('/user/signupPage');
     app.get('/logout',User.logout);
     app.get('/admin/user/list',User.signinRequired,User.adminRequired,User.list);
 
     //Movie
     app.get('/movie/detail/:id',Movie.detail);
-    app.get('/admin/main',User.signinRequired,User.adminRequired,User.index);
     app.get('/admin/movie/new',User.signinRequired,User.adminRequired,Movie.new);
     app.get('/admin/movie/update/:id',User.signinRequired,User.adminRequired,Movie.update);
     app.post('/admin/movie',User.signinRequired,User.adminRequired,Movie.savePoster,Movie.save);
