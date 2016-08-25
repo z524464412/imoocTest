@@ -8,6 +8,7 @@ exports.index = function(req,res){
             if(err){
                 console.log(err);
             }
+<<<<<<< Updated upstream
             console.log(categories);
             //使用angular
             res.json(categories)
@@ -18,6 +19,12 @@ exports.index = function(req,res){
             //    title: 'imooc 首页',
             //    categories: categories
             //});
+=======
+            res.render('index', {
+                title: 'imooc 首页',
+                categories: categories
+            });
+>>>>>>> Stashed changes
         });
 };
 
