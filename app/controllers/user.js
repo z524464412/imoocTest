@@ -25,9 +25,9 @@ exports.signup = function(req,res){
 };
 //登陆验证
 exports.signin = function(req,res){
-    //var _user =req.body.user;
-    var _user = req.body
-    console.log(req.body)
+    var _user =req.body.user;
+    //var _user = req.body
+    console.log(_user)
     var name =_user.username;
     var password =_user.password;
     if(!_user){
@@ -38,6 +38,7 @@ exports.signin = function(req,res){
         if(err){
             console.log(err);
         }
+        console.log(user);
         if(!user){
             return res.redirect('/');
         }
@@ -45,6 +46,7 @@ exports.signin = function(req,res){
             if(err){
                 console.log(err)
             }
+            console.log(isMatch+"!!!!");
             if(isMatch){
                 req.session.user = user;
                 console.log('密码匹配成功');

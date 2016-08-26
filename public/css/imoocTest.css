@@ -119,6 +119,57 @@ a:hover,a:active,a:focus{text-decoration: none;color:#00a1d6;}
     background-color: #fff;
     box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
+@-webkit-keyframes fadeout {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0; /*中间状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@-moz-keyframes fadeout {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeout {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes fadeout {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
 .bg-login{
     margin-top:20px;
     width:416px;
@@ -130,8 +181,11 @@ a:hover,a:active,a:focus{text-decoration: none;color:#00a1d6;}
     -webkit-box-shadow: 0 0 2px #fbfbfb inset,0 0 4px #fbfbfb inset,0 0 8px #fbfbfb inset,0 0 16px #fbfbfb inset,0 0 32px #fbfbfb inset,0 0 64px #fbfbfb inset;
     -moz-box-shadow: 0 0 2px #fbfbfb inset,0 0 4px #fbfbfb inset,0 0 8px #fbfbfb inset,0 0 16px #fbfbfb inset,0 0 32px #fbfbfb inset,0 0 64px #fbfbfb inset ;
     box-shadow: 0 0 2px #fbfbfb inset,0 0 4px #fbfbfb inset,0 0 8px #fbfbfb inset,0 0 16px #fbfbfb inset,0 0 32px #fbfbfb inset,0 0 64px #fbfbfb inset;
+    -webkit-animation: fadeout 3.5s ease .2s both;
+    -moz-animation: fadeout 3.5s ease .2s both;
+    -o-animation: fadeout 3.5s ease .2s both;
+    animation: fadeout 3.5s ease .2s both
 }
-
 
 .loaded{position: fixed;left: 0;top: 0;bottom: 0; right: 0;text-align: center;background-color:rgba(0,0,0,0.3);z-index: 99999}
 .loaded .loading{box-sizing: border-box;display: flex;flex: 0 1 auto; flex-direction: column;flex-grow: 1;flex-shrink: 0;flex-basis: 25%;height: 100%;align-items: center; justify-content: center;}

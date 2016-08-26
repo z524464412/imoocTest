@@ -15,8 +15,8 @@ module.exports = function(app){
     //user
     app.post('/user/signup',User.signup);
     app.post('/user/signin',User.signin);
-    app.get('/user/signinPage');
-    app.get('/user/signupPage');
+    app.get('/user/signinPage',User.signinPage);
+    app.get('/user/signupPage',User.signupPage);
     app.get('/logout',User.logout);
     app.get('/admin/user/list',User.signinRequired,User.adminRequired,User.list);
 

@@ -20,6 +20,7 @@ seajs.config({
         //首页
         index:'src/view/main/index',
         login:'src/view/main/login',
+        signup:'src/view/main/signup',
 
         /*service*/
         service_core:'src/service/service_core',

@@ -8,7 +8,6 @@ exports.index = function(req,res){
             if(err){
                 console.log(err);
             }
-            console.log(categories);
             //使用angular
             //res.json(categories)
             /**

@@ -7,18 +7,22 @@ block content
                     .bg-login
                 .block.r
                     .userbox-login
-                        #form-login
-                            h3.title 注册账号
+                        form(method="POST", action="/user/signin")#form-login
+                            h3.title 登陆
                             .userbox-input
                                 i.icon.icon-user
-                                input(id="username" type="text" placeholder="请输入账号")
+                                label(for="signinName",class="hide") 用户名
+                                input#signupName.form-control(name="user[username]",type="text")
                             .userbox-input
                                 i.icon.icon-lock
-                                input(id="password" type="password" placeholder="请输入密码")
+                                label(for="signinPassword",class="hide") 密码
+                                input#signinPassword.form-control(name="user[password]",type="password")
                             .userbox-input
                                 i.icon.icon-lock
                                 input(id="confirmPWD" type="password" placeholder="确认密码")
                             .userbox-tool
-                                a.btn.btn-info(href="/user/signupPage") 登陆
-                                a.btn.btn-default.signinBtn.r 注册
+                                a.btn.btn-info(type="submit") 登陆
+                                button.r.btn.btn-default(href="/user/signupPage") 注册
     span.clearfix
+    script.
+        var VIEW = 'login'
