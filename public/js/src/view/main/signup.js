@@ -1,4 +1,5 @@
 define(function(require,exports,module){
+    var S_admin = require("service_admin");
     module.exports = {
         init:function(){
 
@@ -8,6 +9,9 @@ define(function(require,exports,module){
 
     };
     var _SELF = {
+        bindAll:function(){
+            $($document).on('click');
+        }
 
     }
 

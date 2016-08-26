@@ -3,9 +3,9 @@ var User = require('../models/user');
 
 //注册验证
 exports.signup = function(req,res){
-    var _user =req.body.user;
+    var _user =req.body;
+    console.log(_user);
     User.find({name: _user.name},function(err,user){
-        console.log(user)
         if(err){
             console.log(err);
         }
@@ -18,17 +18,16 @@ exports.signup = function(req,res){
                 if(err){
                     console.log(err)
                 }
-                res.redirect('/admin/user/list');
+                return res.json({status:'1'});
             });
         }
     })
 };
 //登陆验证
 exports.signin = function(req,res){
-    var _user =req.body.user;
+    var _user =req.body;
     //var _user = req.body
-    console.log(_user)
-    var name =_user.username;
+    var name =_user.name;
     var password =_user.password;
     if(!_user){
         console.log('操作失败');
@@ -38,7 +37,6 @@ exports.signin = function(req,res){
         if(err){
             console.log(err);
         }
-        console.log(user);
         if(!user){
             return res.redirect('/');
         }
@@ -46,15 +44,11 @@ exports.signin = function(req,res){
             if(err){
                 console.log(err)
             }
-            console.log(isMatch+"!!!!");
             if(isMatch){
                 req.session.user = user;
-                console.log('密码匹配成功');
-                return res.json({status:1,result:user});
-                //return res.redirect('/');
+                return res.json({status:'1'});
             }else{
-                return res.json({status:0});
-                //return res.redirect('/');
+                return res.json({status:'err_login'});
             }
         });
     })

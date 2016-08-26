@@ -6,10 +6,11 @@ define(function(require,exports,module){
         }
     };
     var _layout ={
-        signinBtn:'.signinBtn ',
-        username:'#username',
-        password:"#password",
-        confirmPWD:"#confirmPWD"
+        username:'.username',
+        password:".password",
+        confirmPWD:"#confirmPWD",
+        signinBtn:'#signinBtn',
+        signupBtn:'#signupBtn'
     };
     var _SELF ={
         param :{
@@ -18,17 +19,28 @@ define(function(require,exports,module){
         },
         bindAll:function(){
             $(document).on('click',_layout.signinBtn,function(){
-                _SELF.name = $(_layout.username).val();
-                _SELF.password = $(_layout.password).val();
-                _SELF.signinBtn();
+                _SELF.signinSave();
+            }).on('click',_layout.signupBtn,function(){
+                _SELF.signupSave();
+            });
+        },
+        signinSave:function(){
+            var param ={};
+            param.name =$(_layout.username).val();
+            param.password =$(_layout.password).val();
+            S_admin.signin(param,function(data){
+                window.location.href="/";
             })
         },
-        signinBtn:function(){
-            var param ={};
-            param.name =_SELF.name;
-            param.password =_SELF.password;
+        signupSave:function(){
+            var param = {};
+            param.name =$(_layout.username).val();
+            param.password =$(_layout.password).val();
             S_admin.signup(param,function(data){
-                console.log(data);
+                nAlert('success','注册成功');
+                setTimeout(function(){
+                    window.location.href="/user/signinPage";
+                },2000);
             })
         }
     }

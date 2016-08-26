@@ -13,18 +13,16 @@ define(function(require,exports,module){
             $.ajax({
                 type:type,
                 url:url,
-                data:{param:JSON.stringify(param)},
+                //data:{param:JSON.stringify(param)},
+                data:param,
                 dataType:(dataType && dataType.length > 0) ?dataType : "json",
                 beforeSend:function(){
                     //前置操作
-                    alert(url)
-                    console.log(1)
                     $("#loading").show();
                 },
                 success:function(data){
-                    console.log(data)
-                    (type === 'json') && (data =eval('('+data+')'));
-                    if(data.result !== '1' ){
+                    //(type === 'json') && (data =eval('('+data+')'));
+                    if(data.status !== '1' ){
                         msgManage(data.status)
                         if(typeof err_back == 'function'){
                             err_back(data)
@@ -38,7 +36,6 @@ define(function(require,exports,module){
                     }
                 },
                 error:function(e){
-                    console.log(e)
                     msgManage('err_ajax');
                 },
                 complete :function(){

@@ -1,5 +1,7 @@
 var Movie = require('../models/movie');
 var Category = require('../models/category');
+
+//首页列表
 exports.index = function(req,res){
     Category
         .find({})
@@ -8,11 +10,6 @@ exports.index = function(req,res){
             if(err){
                 console.log(err);
             }
-            //使用angular
-            //res.json(categories)
-            /**
-             * 不使用angular
-             */
             res.render('index', {
                 title: 'imooc 首页',
                 categories: categories
@@ -20,7 +17,7 @@ exports.index = function(req,res){
         });
 };
 
-
+//搜索结果
 exports.search = function(req,res){
     var catId =req.query.cat;
     var page =parseInt(req.query.p,10) || 0;

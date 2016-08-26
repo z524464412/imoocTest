@@ -12,10 +12,8 @@ body{padding:0; margin: 0; font-size: 13px;font-family:Microsoft YaHei,Arial,Hel
 ul,li{list-style:none;padding:0;margin:0}
 a{color:#000000;}
 a:hover,a:active,a:focus{text-decoration: none;color:#00a1d6;}
-
-
-
-
+input{box-shadow:none;}
+.panel{margin-top: 10px;}
 /*frame*/
 .W_top_container,.W_top{color:#222;position:relative;z-index:10000;}
 .W_top{height:42px;background: #fff;box-shadow: rgba(0,0,0,0.1)0 1px 2px;top:0;left:0;width:100%;}
@@ -33,9 +31,9 @@ a:hover,a:active,a:focus{text-decoration: none;color:#00a1d6;}
     background-color: #fff;
     border-radius:1pc;padding-right:30px;height:30px;transition:.2s border-color;border:1px solid #ccd0d7
 }
-.W_nav_search .nav_search_input{float:left;width:78px;color:#99a2aa;font-size:9pt;overflow:hidden;height:30px;line-height:30px;padding:0 0 0 10px;border:0;box-shadow:none;background-color:transparent;transition:.2s width}
+.W_nav_search .nav_search_input{float:left;width:78px;color:#99a2aa;font-size:9pt;overflow:hidden;height:30px;line-height:30px;padding:0 0 0 10px;border:0;background-color:transparent;transition:.2s width}
 .W_nav_search .nav_search_input::-ms-clear{display:none}
-.W_nav_search .nav_search_btn{display:block;position:absolute;top:0;right:0;border-radius: 15px;width:30px;min-width:0;cursor:pointer;height:26px;background-color:#FFFFFF;margin:0;padding:0;border:0}
+.W_nav_search .nav_search_btn{display:block;position:absolute;top:0;right:4px;border-radius: 15px;width:30px;min-width:0;cursor:pointer;height:26px;background-color:#FFFFFF;margin:0;padding:0;border:0}
 .nav_search_btn{ margin-top: -2px;}
 .l{
     float: left;

@@ -489,7 +489,7 @@ String.prototype.dateToDate=function(format){
     var date= new Date(this.replace(/([0-9]{4})([0-9]{2})([0-9]{2})/,"$1/$2/$3"));
     if(!format)return date;
     return date.format(format);
-}
+};
 
 /**
  * 格式化时间

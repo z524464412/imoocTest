@@ -180,7 +180,8 @@ app.use(cookieSession({
     keys:['key1','key2'],
 }));
 //静态资源请求路径
-app.use(express.static('public'));
+//app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 //app.locals.resoucePath = "/public";
 //表单数据格式化
 app.use(bodyParser.urlencoded({extended:true}));
