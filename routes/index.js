@@ -3,6 +3,7 @@ var User =require('../app/controllers/user');
 var Movie =require('../app/controllers/movie');
 var Comment =require('../app/controllers/comment');
 var Category =require('../app/controllers/category');
+var Admin = require('../app/controllers/admin');
 module.exports = function(app){
     app.use(function(req,res,next){
         var _user =req.session.user;
@@ -38,9 +39,6 @@ module.exports = function(app){
 
 
     //admin
-    app.get('/admin/mainPage',admin)
+    app.get('/admin/main',Admin.adminPage);
 
-
-    //app.get('/admin/angular',User.signinRequired,Category.angular);
-    //app.get('*',Category.angular);
 };

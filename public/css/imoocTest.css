@@ -13,7 +13,7 @@ ul,li{list-style:none;padding:0;margin:0}
 a{color:#000000;}
 a:hover,a:active,a:focus{text-decoration: none;color:#00a1d6;}
 input{box-shadow:none;}
-.panel{margin-top: 10px;}
+.navbar-static-side{background:#2f4050;}
 /*frame*/
 .W_top_container,.W_top{color:#222;position:relative;z-index:10000;}
 .W_top{height:42px;background: #fff;box-shadow: rgba(0,0,0,0.1)0 1px 2px;top:0;left:0;width:100%;}
@@ -187,11 +187,11 @@ input{box-shadow:none;}
 
 .loaded{position: fixed;left: 0;top: 0;bottom: 0; right: 0;text-align: center;background-color:rgba(0,0,0,0.3);z-index: 99999}
 .loaded .loading{box-sizing: border-box;display: flex;flex: 0 1 auto; flex-direction: column;flex-grow: 1;flex-shrink: 0;flex-basis: 25%;height: 100%;align-items: center; justify-content: center;}
-.wrapper{position: relative; padding-top: 50px; }
+.wrapper{position: relative;height:100%;}
 .stage{padding:0 15px 0 225px;}
 .footer{width: 100%; height:30px; line-height: 30px; padding: 0px 15px; font-size: 12px;color:#fff;text-shadow: 1px 1px 2px rgba(0,0,0,0.5);}
 .footer a{color:#fff;}
-.layout{background:rgba(0,0,0,0.6); position: relative;margin:0; border-radius: 4px;-moz-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);-webkit-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);box-shadow: 0px 2px 3px rgba(0,0,0,0.3);}
+.layout{position: relative;margin:0; border-radius: 4px;-moz-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);-webkit-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);box-shadow: 0px 2px 3px rgba(0,0,0,0.3);}
 .layout-left{background:rgba(0,0,0,0.3);padding:0;border-radius: 4px 4px 0 0;}
 .layout-right{padding:0;border-radius:0 0 4px 4px;}
 .layout-center{padding:0;}
@@ -217,7 +217,8 @@ input{box-shadow:none;}
     .layout-right .layout-footer{border-radius: 0 0 4px 0;}
 }
 
-.control{ width: 200px;  position: absolute; top:50px;left: 10px;z-index:999; border-radius: 3px;-webkit-box-shadow: 0px 2px 3px rgba(0,0,0,0.3);box-shadow: 0px 2px 3px rgba(0,0,0,0.3);}
+.control{position: fixed;width: 220px; z-index: 2001; height: 100%; }
+#control.panel-default{background:#2f4050}
 .control a.tabhandler{ display: block; padding:10px 10px 10px 20px;background:rgba(0,0,0,0.2);font-size: 13px;color:#fff; border-bottom:1px solid rgba(0,0,0,0.3);text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
 .control a.tabhandler:focus{background:rgba(74,96,115,0.95);}
 .control a:hover{background:rgba(0,0,0,0.1);}
@@ -230,7 +231,7 @@ input{box-shadow:none;}
 .control .dropdown-big li p{display:inline-block;width:96%;color: #82d5ff;padding:10px 2%;font-size:12px;border-bottom:1px dashed rgba(255,255,255,0.3);margin-left:10px;}
 .control .dropdown-big li p a{display:block;float:left;width:130px;color:#fff;font-size:13px;margin-top:5px;padding-left:15px;}
 .control .control-search{padding:10px ;color:#fff;background:rgba(0,0,0,0.2);}
-.control .userinfo{ text-align: center; color: #fff;padding:10px 0; background:#133959 url(images/bg/wlight_rtl.png) top right;position: relative; border-radius: 3px 3px 0 0;}
+.control .userinfo{ text-align: center; color: #fff;padding:10px 0; background:#2f4050 url(images/bg/wlight_rtl.png) top right;position: relative; border-radius: 3px 3px 0 0;}
 .control .userinfo img{ width:90px; height:90px;border-radius: 50%; border:3px solid rgba(255,255,255,0.3)}
 .control .userinfo button{ position: absolute; top:5px;right:5px; text-align: center;cursor: pointer;}
 .control .userinfo h4{font-size: 14px;}

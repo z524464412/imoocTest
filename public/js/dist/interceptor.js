@@ -2,21 +2,12 @@ define(function(require, exports, module) {
     var Interceptor = {
         config:{
             APP:[
-                {'id':'1','name':'快捷菜单','icon':'icon-dashboard', 'leaf': [
-                    {'id':'1-1','name':'最近使用','icon':'icon-cogs','leaf':[]},
-                    {'id':'1-2','name':'我的收藏','icon':'icon-cogs','leaf':[]}
-                ]},
                 {'id':'10001','name':'系统管理','icon':'icon-cogs','leaf':[
                     {'id':'10001-1','name':'学校管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysSchoolManage-index.action?pageId=10001-1', isLeaf:true},
                     {'id':'10001-2','name':'系统模块管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysFunctionManage-index.action?pageId=10001-2', isLeaf:true},
                     {'id':'10001-3','name':'学校模块管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysSchFunctionManage-index.action?pageId=10001-3', isLeaf:true},
                     {'id':'10001-4','name':'代码设置','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysCodeSetting-index.action?pageId=10001-4', isLeaf:true},
-                    //{'id':'10001-5','name':'学年学期','icon':'icon-star-empty','href':seajs.baseHTTP+'/admin/schterm.action'}
-                ]},
-                {'id':'9999','name':'个人设置','icon':'icon-cog','leaf':[
-                    {'id':'9999-1','name':'个人信息设置','icon':'icon-user','href':seajs.baseHTTP+'/user/personalSetting-index.action?pageId=9999-1', isLeaf:true},
-                    {'id':'9999-2','name':'快捷菜单设置','icon':'icon-dashboard','href':seajs.baseHTTP+'/user/userFavmenu-index.action?pageId=9999-2', isLeaf:true}]
-                }
+                ]}
             ]
         },
         init: function () {
@@ -24,12 +15,12 @@ define(function(require, exports, module) {
             //    $("body").html('<div class="container"><div class="page-header"><h1>对不起，您的浏览器不受支持</h1></div><p class="lead">特别注意，我们坚决支持这些浏览器的最新版本。在 Windows 平台，我们支持 Internet Explorer 9以上。请看下面列出的详细信息。</p></div><div class=table-responsive><table class="table table-bordered table-striped"><thead><tr><td></td><th>Chrome</th><th>Firefox</th><th>Internet Explorer</th><th>Opera</th><th>Safari</th></tr></thead><tbody><tr><th>Android</th><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-muted rowspan=3 style="vertical-align: middle;">N/A</td><td class=text-danger><span class="glyphicon glyphicon-remove">不支持</span><span class=sr-only>不支持</span></td><td class=text-muted>N/A</td></tr><tr><th>iOS</th><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-muted>N/A</td><td class=text-danger><span class="glyphicon glyphicon-remove">不支持</span><span class=sr-only>不支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td></tr><tr><th>Mac OS X</th><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td></tr><tr><th>Windows</th><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-success><span class="glyphicon glyphicon-ok">支持</span><span class=sr-only>支持</span></td><td class=text-danger><span class="glyphicon glyphicon-remove">不支持</span><span class=sr-only>不支持</span></td></tr></tbody></table></div>');
             //}else{
             //    if($(".body").attr("app")){
-                    $("<div/>",{"id":"loading","class":"loaded"})
-                        .append('<div class=loading><div class="loader-inner pacman"><div></div><div></div><div></div><div></div><div></div></div>')
-                        .appendTo("body");
+            //        $("<div/>",{"id":"loading","class":"loaded"})
+            //            .append('<div class=loading><div class="loader-inner pacman"><div></div><div></div><div></div><div></div><div></div></div>')
+            //            .appendTo("body");
                     this.bar();
                     this.control();
-                    this.breadcrumb();
+                    //this.breadcrumb();
                     this.layout();
                     $(window).resize(function(){
                         Interceptor.layout();
@@ -160,15 +151,6 @@ define(function(require, exports, module) {
             tmp+='<span class="pull-right">';
             tmp+='<div class="dropdown pull-right"><a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="icon-cog"></span></a>';
             tmp+='<div class="dropdown-menu theme-pane">';
-            tmp+='<h4>背景壁纸</h4>';
-            tmp+='<a href="" class="theme theme1 active" data-bg="8"></a>';
-            tmp+='<a href="" class="theme theme2" data-bg="6"></a>';
-            tmp+='<a href="" class="theme theme3" data-bg="9"></a>';
-            tmp+='<a href="" class="theme theme4" data-bg="13"></a>';
-            tmp+='<a href="" class="theme theme5" data-bg="14"></a>';
-            tmp+='<a href="" class="theme theme6" data-bg="5"></a>';
-            tmp+='<a href="" class="theme theme7" data-bg="12"></a>';
-            tmp+='<a href="" class="theme theme8" data-bg="1"></a>';
             tmp+='</div></div>';
             tmp+='<a href="'+seajs.baseHTTP+'/logout.action"><title>退出</title><span class="icon-off"></span></a>';
             tmp+='</span></nav>';
@@ -263,7 +245,7 @@ define(function(require, exports, module) {
             $con_min.attr("data-original-title","最小化");
         },
         control: function () {
-            $(".wrapper").prepend("<div class=\"control panel panel-default\" id=\"control\"><div class=\"userinfo\"><button id='control-min' class='btn btn-xs btn-link tipr' title='最小化'><span class='icon-arrow-left'></span></button><img onerror='' src=''/><h4>123456</h4></div></div>");
+            $(".wrapper").prepend("<div class=\"control panel panel-default\" id=\"control\"><div class=\"userinfo\"><button id='control-min' class='btn btn-xs btn-link tipr' title='最小化'><span class='icon-arrow-left'></span></button><img onerror='' src='../../css/images/logo.jpg'/><h4>管理员</h4></div></div>");
             $("#control-min").click(function(){
                 if(parseInt($("#control").css("left"))===0){
                     Interceptor.controlMax();
@@ -274,7 +256,7 @@ define(function(require, exports, module) {
             });
             var $con=$("#control");
             if ($con.length>0) {
-                $con.append('<div class="control-search"><div class="input-group"><span class="input-group-addon"><span class="icon-search"></span></span><input id="controlSearch" type="text" class="form-control" placeholder="功能搜索"></div></div>');
+                //$con.append('<div class="control-search"><div class="input-group"><span class="input-group-addon"><span class="icon-search"></span></span><input id="controlSearch" type="text" class="form-control" placeholder="功能搜索"></div></div>');
                 _.each(this.config.APP,function(item,i){
                     var controlPane = $('<div/>',{"class":"dropdown"});
                     var controlHandler = $('<a/>',{
@@ -447,7 +429,7 @@ define(function(require, exports, module) {
 
     };
     $(function(){
-        //Interceptor.init();
+        Interceptor.init();
     })
 
 });

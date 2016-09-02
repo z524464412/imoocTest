@@ -4,7 +4,8 @@ html(lang="en")
         meta(charset="utf-8")
         title 后台管理
         include includes/head
-    body(class="body" app="2")
-        include includes/header
-        block content
-        include includes/footer
+    body(class="fixed-sidebar body",app='10001-1')
+        .wrapper
+            block nav
+            block content
+            include includes/footer
