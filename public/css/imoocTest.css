@@ -256,17 +256,6 @@ input{box-shadow:none;}
 .topbar .pull-right a.active{background:#5cb85c;color:#fff;}
 .topbar .pull-right a span.badge{ position: absolute;margin:8px 0 0 -8px; background: #f86b4f;color: #fff;font-size: 11px;padding:3px 5px;}
 .topbar .pull-right .theme-pane{width: 200px;}
-.topbar .pull-right a.theme{ width: 36px;height: 36px;border:3px solid rgba(255,255,255,0.2);background: #ccc;border-radius: 50%;margin:5px 0 5px 10px;}
-.topbar .pull-right a.theme.active{border-color:rgba(255,255,255,1.0);}
-.topbar .pull-right a.theme1{ background:#699cb7 ;}
-.topbar .pull-right a.theme2{ background:#e86591 ;}
-.topbar .pull-right a.theme3{ background:#10a46a ;}
-.topbar .pull-right a.theme4{ background:#07456e;}
-.topbar .pull-right a.theme5{ background:#ae8490 ;}
-.topbar .pull-right a.theme6{ background:#0b0e22;}
-.topbar .pull-right a.theme7{ background:#35b1fb ;}
-.topbar .pull-right a.theme8{ background:#f09ea2 ;}
-.topbar .pull-right a.theme101{ background:#2b768d ;}
 .topbar .logo{display: block;float: left; width: 190px; height: 53px; background: url(images/logo.png) no-repeat center;}
 .topbar .user{ line-height: 50px; }
 .topbar .user img{width: 24px; height: 24px; border:2px solid rgba(255,255,255,0.3); border-radius: 50%; margin-right:3px; }
