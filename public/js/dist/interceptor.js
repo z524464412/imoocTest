@@ -2,11 +2,16 @@ define(function(require, exports, module) {
     var Interceptor = {
         config:{
             APP:[
-                {'id':'10001','name':'系统管理','icon':'icon-cogs','leaf':[
-                    {'id':'10001-1','name':'学校管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysSchoolManage-index.action?pageId=10001-1', isLeaf:true},
-                    {'id':'10001-2','name':'系统模块管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysFunctionManage-index.action?pageId=10001-2', isLeaf:true},
-                    {'id':'10001-3','name':'学校模块管理','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysSchFunctionManage-index.action?pageId=10001-3', isLeaf:true},
-                    {'id':'10001-4','name':'代码设置','icon':'icon-star-empty','href':seajs.baseHTTP+'/sysAdmin/sysCodeSetting-index.action?pageId=10001-4', isLeaf:true},
+                {'id':'10001','name':'主页','icon':'icon-cogs','leaf':[
+                    {'id':'10001-2','name':'主页','icon':'icon-star-empty','href':'/admin/movie/new', isLeaf:true},
+                ]},
+                {'id':'10001','name':'电影管理','icon':'icon-cogs','leaf':[
+                    {'id':'10001-2','name':'添加电影','icon':'icon-star-empty','href':'/admin/movie/new', isLeaf:true},
+                    {'id':'10001-4','name':'电影列表','icon':'icon-star-empty','href':'/admin/movie/list', isLeaf:true},
+                ]},
+                {'id':'10001','name':'电影类型','icon':'icon-cogs','leaf':[
+                    {'id':'10001-1','name':'添加类型','icon':'icon-star-empty','href':'/admin/category/new', isLeaf:true},
+                    {'id':'10001-2','name':'类型列表','icon':'icon-star-empty','href':'/admin/category/list', isLeaf:true},
                 ]}
             ]
         },
@@ -18,7 +23,7 @@ define(function(require, exports, module) {
             //        $("<div/>",{"id":"loading","class":"loaded"})
             //            .append('<div class=loading><div class="loader-inner pacman"><div></div><div></div><div></div><div></div><div></div></div>')
             //            .appendTo("body");
-                    this.bar();
+            //        this.bar();
                     this.control();
                     //this.breadcrumb();
                     this.layout();
@@ -107,7 +112,11 @@ define(function(require, exports, module) {
             $("[data-toggle=popover]").popover();
             var $scroll=$(".scroll");
             if($scroll.length > 0){
-                $(".scroll").mCustomScrollbar({axis:'yx',mouseWheel:{enable: true, scrollAmount:'400px', axis: 'y'} ,advanced: {autoScrollOnFocus: false}});
+                //$(".scroll").mCustomScrollbar({axis:'yx',mouseWheel:{enable: true, scrollAmount:'400px', axis: 'y'} ,advanced: {autoScrollOnFocus: false}});
+                $(".scroll").mCustomScrollbar({
+                    setHeight:280,
+                    theme:"inset-2-dark"
+                });
             }
             $(".modal").on('shown.bs.modal',function(){
                 $(this).find('.scroll').mCustomScrollbar('update');
@@ -230,22 +239,29 @@ define(function(require, exports, module) {
         },
         controlMin:function(){
             var $con_min=$("#control-min");
+            var $sidebar =$("#sidebar");
             $con_min.find("span").removeClass("icon-arrow-left").addClass('icon-arrow-right');
+            $sidebar.hide();
+            $sidebar.fadeIn(500);
             $("#control").addClass("control-min");
             $(".topbar,.footer").css("padding-left",55);
             $(".stage").css("padding-left",55);
-            $con_min.attr("data-original-title","最大化")
+            $con_min.attr("data-original-title","最大化");
         },
         controlMax:function(){
             var $con_min=$("#control-min");
             $con_min.find("span").removeClass("icon-arrow-right").addClass('icon-arrow-left');
+            $("#sidebar").hide();
+            $("#sidebar").fadeIn(500);
             $("#control").removeClass("control-min");
             $(".topbar,.footer").css("padding-left",15);
             $(".stage").css("padding-left",225);
             $con_min.attr("data-original-title","最小化");
         },
         control: function () {
-            $(".wrapper").prepend("<div class=\"control panel panel-default\" id=\"control\"><div class=\"userinfo\"><button id='control-min' class='btn btn-xs btn-link tipr' title='最小化'><span class='icon-arrow-left'></span></button><img onerror='' src='../../css/images/logo.jpg'/><h4>管理员</h4></div></div>");
+            $(".wrapper").prepend("<div class=\"control panel panel-default\" id=\"control\"><div id='sidebar'><div class=\"userinfo\">" +
+                "<button id='control-min' class='btn btn-xs btn-link tipr' title='最小化'><span class='icon-arrow-left'>" +
+                "</span></button><img onerror='' src='../../css/images/logo.jpg'/><h4>管理员</h4></div></div></div>");
             $("#control-min").click(function(){
                 if(parseInt($("#control").css("left"))===0){
                     Interceptor.controlMax();
@@ -254,7 +270,7 @@ define(function(require, exports, module) {
                 }
                 return false;
             });
-            var $con=$("#control");
+            var $con=$("#sidebar");
             if ($con.length>0) {
                 //$con.append('<div class="control-search"><div class="input-group"><span class="input-group-addon"><span class="icon-search"></span></span><input id="controlSearch" type="text" class="form-control" placeholder="功能搜索"></div></div>');
                 _.each(this.config.APP,function(item,i){
@@ -316,20 +332,25 @@ define(function(require, exports, module) {
                             }
                         });
                     }
-                    controlPane.append(controlHandler).append(ulWrapper).appendTo("#control");
+                    controlPane.append(controlHandler).append(ulWrapper).appendTo($con);
                     $('#control .dropdown').on('show.bs.dropdown', function () {
                         var h=$(this).find(".dropdown-menu").height();
-                        $(this).find(".dropdown-menu").css("top",(h>40)?(-h/2):0);
+                        //$(this).find(".dropdown-menu").css("top",(h>40)?(-h/2):0);
+                        $(this).find(".dropdown-menu").css("top",0)
                     })
                 });
             };
-            $("#control a.dropdown-toggle").on("mouseover", function() {
-                if ($(this).parent().is(".open")) {
-                    return ;
-                }
-                $(this).dropdown("toggle")
-            });
-
+            //$("#control a.dropdown-toggle").on("mouseover,mouseout", function() {
+            //    if ($(this).parent().is(".open")) {
+            //        return ;
+            //    }
+            //    $(this).dropdown("toggle")
+            //});
+            $(".control .dropdown").hover(function(){
+                $(this).addClass('open');
+            },function(){
+                $(this).removeClass('open');
+            })
             $(document).on('keyup','#controlSearch',function(){
                 var v=this.value;
                 _.filter($('#control .dropdown'), function(el){
