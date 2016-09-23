@@ -14,7 +14,13 @@ seajs.config({
         /*common*/
         'lib':'dist/lib',
         'interceptor':'dist/interceptor',
-
+        /*tools*/
+        'shCircleLoader':'/js/dist/DanmuPlayer-master/src/js/jquery.shCircleLoader',
+        'tooltip':'/js/dist/DanmuPlayer-master/src/js/sco.tooltip',
+        'colpick':'/js/dist/DanmuPlayer-master/src/js/colpick',
+        'danmu':'/js/dist/DanmuPlayer-master/src/js/jquery.danmu',
+        'main':'/js/dist/DanmuPlayer-master/src/js/main',
+        'jq2.1.4':'/js/dist/DanmuPlayer-master/src/js/jquery-2.1.4.min.js',
 
         /*views*/
         //首页
@@ -22,6 +28,9 @@ seajs.config({
         login:'src/view/main/login',
         signup:'src/view/main/signup',
 
+        /*电影*/
+        'movie_detail':'src/view/movie/movie_detail.js',
+        'movie_list':'src/view/movie/movie_list.js',
         /*service*/
         service_core:'src/service/service_core',
         service_admin:'src/service/service_admin'

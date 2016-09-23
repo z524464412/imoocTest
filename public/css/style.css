@@ -41,6 +41,7 @@ body.body-small .navbar-top-links li:last-child{margin-right:10px}
 .nav.nav-second-level>li.active{border:none}
 .nav.nav-second-level.collapse[style]{height:auto!important}
 .nav-header a{color:#DFE4ED}
+.nav-header img{height: auto;width: 64px;}
 .nav-header .text-muted{color:#8095a8}
 .minimalize-styl-2{padding:4px 12px;margin:14px 5px 5px 20px;font-size:14px;float:left}
 .navbar-form-custom{float:left;height:50px;padding:0;width:200px;display:inline-table}
@@ -451,8 +452,9 @@ a.forum-item-title{color:inherit;display:block;font-size:18px;font-weight:600}
 a.forum-item-title:hover{color:inherit}
 .forum-icon .fa{font-size:30px;margin-top:8px;color:#9b9b9b}
 .forum-item.active .fa,.forum-item.active a.forum-item-title{color:#1ab394}
-@media (max-width:992px){.forum-info{margin:15px 0 10px;display:none}
-.forum-desc{float:none!important}
+@media (max-width:992px){
+    /*.forum-info{margin:15px 0 10px;display:none}*/
+/*.forum-desc{float:none!important}*/
 }
 .vertical-container{width:90%;max-width:1170px;margin:0 auto}
 .vertical-container::after{content:'';display:table;clear:both}
@@ -1353,3 +1355,4 @@ body.fixed-sidebar.mini-navbar .navbar-static-side{width:70px}
 @media (min-width:768px){.bs-glyphicons{margin-right:0;margin-left:0}
 .bs-glyphicons li{width:12.5%;font-size:12px}
 }
+.container-content{padding: 20px;}

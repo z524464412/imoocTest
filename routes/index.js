@@ -4,6 +4,7 @@ var Movie =require('../app/controllers/movie');
 var Comment =require('../app/controllers/comment');
 var Category =require('../app/controllers/category');
 var Admin = require('../app/controllers/admin');
+var Danmu =
 module.exports = function(app){
     app.use(function(req,res,next){
         var _user =req.session.user;
@@ -38,7 +39,10 @@ module.exports = function(app){
     app.get('/results',User.signinRequired,User.adminRequired,Index.search);
 
 
+    //danmu
+    //app.get('/admin/movie/danmu',)
+
     //admin
-    app.get('/admin/main',Admin.adminPage);
+    app.get('/admin/main',User.signinRequired,User.adminRequired,Admin.adminPage);
 
 };

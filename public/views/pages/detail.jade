@@ -2,8 +2,13 @@ extend ../layout
 block content
     .container
         .row
-            .col-md-7
-                video(src="#{movie.flash}", width="720", height="600", controls="controls") 你的浏览器不支持video
+            .col-sm-9
+                #danmubox(data-src="/upload/video/level5.mp4")
+            .col-sm-3
+                #danmut
+        .row
+            .col-sm-6
+                //video(src="#{movie.flash}", width="720", height="600", controls="controls") 你的浏览器不支持video
                 .panel.panel-defatul
                     .panel-heading
                         h3 评论区
@@ -41,7 +46,7 @@ block content
                                     button.btn.btn-primary(type='submit') 提交
                                 else
                                     a.navbar-link(href="#", data-toggle="modal", data-target="#signinModal") 登录后评论
-            .col-md-5
+            .col-sm-6
                 .dl-horizontal
                     dt 电影名字
                     dd= movie.title
@@ -55,4 +60,5 @@ block content
                     dd= movie.year
                     dt 简介
                     dd= movie.summary
-script(src="/javascript/detail.js")
+    script.
+        var VIEW ='movie_detail';

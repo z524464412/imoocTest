@@ -1,5 +1,4 @@
-extends ../layout
-
+extends ../admin_content
 block content
     .container
         .row
@@ -66,4 +65,5 @@ block content
                 .form-group
                     .col-sm-offset-6.col-sm-6
                     button.btn.btn-default(type="submit") 录入
-    script(src="/javascript/admin.js")
+    script.
+        var VIEW = 'admin';

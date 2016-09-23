@@ -14,6 +14,10 @@ var MovieSchema = new Schema({
         type:ObjectId,
         ref:'Category'
     },
+    danmu:{
+        type:ObjectId,
+        ref:'Danmu'
+    },
     meta: {
         createAt: {
             type: Date,

@@ -13,6 +13,7 @@ exports.save = function(req,res){
             if (err) {
                 console.log(err);
             }
+        console.log(category)
             res.redirect('/admin/category/list/');
         });
 };

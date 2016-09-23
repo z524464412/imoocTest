@@ -6,16 +6,13 @@ var fs = require('fs');
 var path = require('path');
 //detail page
 exports.detail =function(req, res) {
-    console.log(req.params.id);
     var id = req.params.id;
     Movie.findById(id, function(err, movie) {
-        console.log(movie)
         Comment
             .find({movie:id})
             .populate('from','name')
             .populate('reply.from replay.to','name')
             .exec(function(err,comments){
-                console.log(comments)
                 //res.json(
                 //    result = {
                 //        id: id,
@@ -86,9 +83,6 @@ exports.savePoster = function(req,res,next){
 //admin post movie
 //app.post('/admin/movie/new', function(req, res) {
 exports.save = function(req,res){
-    //console.log(req.body);
-    //console.log(req.body.movie);
-    //console.log(req)
     var id = req.body.movie._id;
     var movieObj = req.body.movie;
     var categoryId = movieObj.category;
@@ -179,6 +173,7 @@ exports.list =function(req,res){
             }
             res.render('list',{
                 title:'demo1 列表页',
+
                 movies:movies
             })
         });

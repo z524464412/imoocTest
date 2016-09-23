@@ -24,7 +24,7 @@ define(function(require, exports, module) {
             //            .append('<div class=loading><div class="loader-inner pacman"><div></div><div></div><div></div><div></div><div></div></div>')
             //            .appendTo("body");
             //        this.bar();
-                    this.control();
+            //        this.control();
                     this.layout();
                     $(window).resize(function(){
                         Interceptor.layout();
