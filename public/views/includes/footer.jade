@@ -1,16 +1,6 @@
 script(src="/js/sea.js" id="seajsnode")
 script.
-    if(seajs.production) {
-        if(VIEW){
-            seajs.use('imooc',function(){
-                seajs.use(VIEW,callback)
-            });
-        }
-    }else{
-        if(VIEW){
-            seajs.use(VIEW,callback)
-        }
-    }
+    seajs.use(VIEW,callback);
     function callback(m) {
         console.log(m)
         m.init();

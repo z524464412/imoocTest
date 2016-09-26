@@ -1,3 +1,72 @@
 #wrapper
     nav.navbar-default.navbar-static-side(role="navigation")
         .sidebar-collapse
+            ul.nav#side-menu
+                li.nav-header
+                    .dropdown.forum-info
+                        span
+                            img(alt="image",class="img-circle",src="/css/images/HeadPortrait.jpg")
+                        a(data-toggle="dropdown" class="dropdown-toggle" href="#")
+                            span.clear
+                            span.block.m-t-xs
+                                strong.font-bold #{user.name}
+                            span.text-muted.text-xs.block 超级管理员
+                                b.caret
+                        ul.dropdown-menu.animated.fadeInRight.m-t-xs
+                            li
+                                a.J-menuItem(href="/user/list") 个人资料
+                            li
+                                a.J-menuItem(href="/admin/category/list") 联系我们
+                            li.divider
+                            li
+                                a(href="/logout") 安全退出
+                li
+                    a(href="#")
+                        i.fa.fa-home
+                        span.nav-label 所有列表
+                        span.fa.arrow
+                    ul.nav.nav-second-level
+                        li
+                            a(class="J_menuItem" href="/admin/user/list") 用户列表
+                        li
+                            a(class="J_menuItem" href="/admin/category/list") 电影类型列表
+                        li
+                            a(class="J_menuItem" href="/admin/movie/list") 电影列表
+    #page-wrapper.gray-bg
+        .row.border-bottom
+            nav.navbar.navbar-static-top(role="navigation",style="margin-bottom:0")
+                .navbar-header
+                    a.navbar-minimalize.minimalize-styl-2.btn.btn-primary(href="#")
+                        i.fa.fa-bars
+        .row.content-tabs
+            button.roll-nav.roll-left.J_tabLeft
+                i.fa.fa-backward
+            nav.page-tabs.J_menuTabs
+                .page-tabs-content
+                    a(href="javascript:;" class="active J_menuTab" data-id="/admin/user/list") 用户列表
+            button.roll-nav.roll-right.J_tabRight
+                i.fa.fa-forward
+            .btn-group.roll-nav.roll-right
+                button.dropdown.J_tabClose(data-toggle='dropdown')
+                    | 关闭操作
+                    span.caret
+                ul.dropdown-menu.dropdown-menu-right(role='menu')
+                    li.J_tabShowActive
+                        a 定位当前选项卡
+                    li.divider
+                    li.J_tabCloseAll
+                        a 关闭全部选项卡
+                    li.J_tabCloseOther
+                        a 关闭其他选项卡
+            a.roll-nav.roll-right.J_tabExit(href='/')
+                i.fa.fa.fa-sign-out
+                |  主页
+            //a.roll-nav.roll-right.J_tabExit(href='/logout')
+            //    i.fa.fa.fa-sign-out
+            //    |  退出
+        #content-main.row.J_mainContent
+            iframe.J_iframe(name='iframe0', width='100%', height='100%', src='/admin/user/list', frameborder='0', data-id='/admin/user/list', seamless='')
+        .footer
+            .pull-right
+                | © 2014-2015
+                a(href='http://www.zi-han.net/', target='_blank') zihan's blog

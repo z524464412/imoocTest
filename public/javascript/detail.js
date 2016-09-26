@@ -1,6 +1,5 @@
 $(function(){
     $(document).on('click','.comment',function(){
-        alert(1)
         var target = $(this);
         var toId = target.data('tid');
         console.log(toId);
